@@ -1,0 +1,9 @@
+git init - Khởi tạo 1 local repository trên máy tính cá nhân.
+
+git remote add origin https://github.com/Khadeve/Task_NewRepository.git - Khởi tạo liên kết giữa local repo tới remote repo với đường dẫn như trên.
+
+git add . - Update các thay đổi trên local repo.
+
+git commit -m "message" - Tạo mới 1 đánh dấu nội dung (commit) trên local repository.
+
+git push origin master - Đẩy các nội dung từ local lên remote repository.

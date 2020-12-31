@@ -1,0 +1,4 @@
+Syntax: git clone https://github.com/codegym-vn/wf-hello.git
+
+Sao chép source code từ đường dẫn https://github.com/codegym-vn/wf-hello.git
+về máy tính cá nhân.
