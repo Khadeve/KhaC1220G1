@@ -1,0 +1,78 @@
+* {
+    max-width: 700px;
+    margin: auto;
+}
+
+div {
+    border-radius: 5px;
+}
+
+#header {
+    height: 40px;
+    width: 100%;
+    background-color: brown;
+    position: fixed;
+    z-axis: 1;
+}
+
+#footer {
+    height: 50px;
+    width: 100%;
+    background-color: darkgrey;
+    clear: both;
+    position: relative;
+}
+
+#title {
+    margin-left: 3%;
+}
+
+.left {
+    height: 1200px;
+    width: 35px;
+    background-color: cornflowerblue;
+    float: left;
+    position: inherit;
+}
+
+.right {
+    height: 1200px;
+    width: 35px;
+    background-color: cornflowerblue;
+    float: right;
+    position: inherit;
+}
+
+.stuff {
+    display: inline-block;
+    background-color: azure;
+    margin-top: 40px;
+    margin-left: auto;
+    width: 90%;
+    height: 1155px;
+}
+
+p, li {
+    font-family: Calibri;
+}
+
+.head {
+    font-size: 20px;
+}
+
+#name {
+    font-family: "Calibri";
+    float: right;
+    margin-top: 5px;
+    margin-right: 4%;
+}
+
+@media only screen and (max-width: 430px) {
+    .left, .right {
+        display: none;
+    }
+    .stuff {
+        width: 100%;
+        margin-left: 10px;
+    }
+}
