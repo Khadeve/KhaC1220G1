@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale:1.0">
+    <style>
+        form {
+            font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, sans-serif;
+            font-weight: bold;
+        }
+        select {
+            width: 200px;
+            padding: 5px;
+            margin: 10px 0;
+            border: none;
+            background-color: #f1f1f1;
+        }
+        /*.top-space {
+            margin-top: 50px;
+        }*/
+        input {
+            border: none;
+            margin: 10px 0;
+            padding: 5px;
+            background-color: #f1f1f1;
+        }
+        .radio-input {
+            margin-bottom: 15px;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+            margin-top: -5px;
+        }
+        input[type="email"] {
+            width: 380px;
+            margin-bottom: 20px;
+        }
+        input[type="submit"] {
+            width: 70px;
+            /*border: 1px solid red;*/
+            font-weight: bold;
+            text-align: center;
+            padding: 5px;
+        }
+        .required {color: red}
+    </style>
+</head>
+<body>
+<h1>Order Form</h1>
+<form action="/orderform.html" target="_blank" method="get">
+    <!-- MENU -->
+    <div class="radio-input">
+      <label for="cake">What would you like to buy?</label><br/>
+      <select id="cake" name="item">
+        <option value="sw">Sanwich</option>
+        <option value="brd">Bread</option>
+        <option value="chol">Chocolate</option>
+        <option value="Oro">Oreo</option>
+      </select>
+    </div>
+    <!-- RECEIVE -->
+    <p>How many would you like to order?</p>
+    <div class="radio-input" style="margin-top: -10px">
+      <input type="radio" id="oneitem" name="price" value="1 - $10">
+      <label for="oneitem">1 - $10</label><br>
+      <input type="radio" id="twoitems" name="price" value="2 - $20">
+      <label for="twoitems">2 - $20</label><br>
+      <input type="radio" id="threeitems" name="price" value="3 - $25">
+      <label for="threeitems">3 - $25</label><br>
+    </div>
+    <!-- NAME -->
+    <div class="radio-input">
+      <label for="fname">Name <span class="required">*</span></label><br/>
+      <input type="text" id="fname" name="fname" size="15" placeholder="FirstName..." required/>
+      <input type="text" id="lname" name="lname" size="15" placeholder="LastName..." required/>
+    </div>
+    <!-- EMAIL -->
+    <div class="radio-input">
+      <label for="email">Email</label><br>
+      <input type="email" id="email" name="email" placeholder="abc@example.com"><br>
+    </div>
+    <!-- PHONE NUMBER -->
+    <div class="radio-input">
+        <label for="phone">Phone number</label><br>
+        <input id="phone" name="phone" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+    </div>
+    <!-- SUBMIT BUTTON -->
+    <input type="submit" name="Submit" value="Submit"/>
+</form>
+</body>
+</html>
