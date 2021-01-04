@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscription</title>
+    <style>
+        h1 {
+            border-style: none;
+            background-color: aquamarine;
+            text-align: left;
+            margin: 10px;
+        }
+        form {
+            background-color: yellow;
+        }
+        .parlabel {
+            float: left;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<form action="form_task2.html" method="get">
+    <h1>SUPCRIPTION</h1>
+    <label class="parlabel" for="name" style="margin-right: 50px">Full name</label>
+    <input type="text" id="name" name="name" size="30">
+    <br><br>
+    <label class="parlabel" for="birthday" style="margin-right: 36px">Day of birth</label>
+    <input type="date" id="birthday" name="birthday">
+    <br><br>
+    <p style="margin-right: 62px; color:blue; display: inline">Gender</p>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">male</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">female</label>
+    <br><br>
+<!--    <p style="margin-right: 62px; color:blue; display: inline">Address</p>-->
+    <label class="parlabel" style="margin-right: 62px" for="address">Address</label>
+    <textarea id="address" name="address" rows="4" cols="25"></textarea>
+    <br><br>
+<!--  Class  -->
+    <label class="parlabel" for="class" style="margin-right:80px">Class</label>
+    <select name="class" id="class" style="width: 100px">
+        <option value="12a1">12A1</option>
+        <option value="12a3">12A2</option>
+        <option value="12a2">12A3</option>
+    </select>
+    <br><br>
+<!--  Email -->
+    <label class="parlabel" for="email" style="margin-right:75px">Email</label>
+    <input type="email" id="email" name="email" placeholder="abc@gmail.com">
+    <br><br>
+<!--  Phone number  -->
+    <label class="parlabel" for="tele" style="margin-right:73px">Phone</label>
+    <input type="tel" id="tele" name="tele">
+    <br><br>
+<!--  Submit and reset  -->
+    <input type="submit" value="submit" style="margin-right:10px; margin-left: 113px">
+    <input type="reset" value="reset" style="margin-bottom: 5px">
+</form>
+</body>
+</html>
