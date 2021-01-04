@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscription Form</title>
+    <style>
+        label {
+            font-size: 110%;
+            font-weight: bold;
+        }
+        button {
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: white;
+            padding: 2px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<form action="https://demo.codegym.vn/6/registration_form/register.php" method="post" target="_blank">
+    <label for="name">Họ và tên:</label><br>
+    <input type="text" id="name" name="name">
+    <br><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email">
+    <br><br>
+    <label for="phone">Số điện thoại:</label><br>
+    <input type="tel" id="phone" name="phone">
+    <br>
+    <p style="font-weight: bold; font-size: 110%; margin-bottom: 0px">Giới tính:</p>
+    <input type="radio" name="gender" id="male" value="male">
+    <label for="male">Nam</label>
+    <input type="radio" name="gender" id="female" value="female">
+    <label for="female">Nữ</label><br><br>
+    <button type="submit" name="submit" value="submit">Đăng ký</button>
+</form>
+</body>
+</html>
