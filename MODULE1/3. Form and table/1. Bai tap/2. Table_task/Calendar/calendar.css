@@ -1,0 +1,39 @@
+h1 {
+    color: blue;
+    text-align: center;
+}
+table {
+    width: 100%;
+}
+th, td {
+    width: 14%;
+}
+#tbl1 {
+    /*width: 100%;*/
+    background-color: orange;
+    color: white;
+    border: 2px solid white;
+    height: 40px;
+    border-collapse: collapse;
+}
+th.day {
+    border: 2px solid white;
+    /*width: 14%;*/
+}
+#tbl2 {
+    /*width: 100%;*/
+    border: 2px solid gray;
+    border-collapse: collapse;
+}
+#tbl3 {
+    border: 2px groove gray;
+    border-collapse: collapse;
+}
+td.calendar {
+    border: 2px solid gray;
+    text-align: center;
+    width: 14%;
+    height: 40px;
+    font-weight: bold;
+    font-size: 110%;
+}
