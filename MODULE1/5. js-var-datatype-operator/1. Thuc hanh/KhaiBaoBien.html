@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Variable Declaration</title>
+</head>
+<body>
+<p id="show"></p>
+<input type="button" onclick="showInteger()" value="showInteger"><br>
+<input type="button" onclick="showFloat()" value="showFloat"><br>
+<input type="button" onclick="showBoolean()" value="showBoolean"><br>
+<input type="button" onclick="showString()" value="showString"><br>
+<script>
+    let integer = 10;
+    function showInteger() {
+        document.write("Integer number = " + integer);
+    }
+    let floatNumber = 20.5;
+    function showFloat() {
+        document.write("floatNumber = " + floatNumber);
+    }
+    let b = true;
+    function showBoolean() {
+        document.write("Boolean value = " + b);
+    }
+    let str = "Sài Gòn";
+    function showString() {
+        document.write("string = " + str);
+    }
+</script>
+</body>
+</html>

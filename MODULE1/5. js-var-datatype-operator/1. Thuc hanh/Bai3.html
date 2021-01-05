@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>InputAndCheck</title>
+</head>
+<body>
+<input type="button" onclick="inputVar()" value="Click">
+<p id="show"></p>
+<script>
+    let a, b;
+    function inputVar() {
+        a = prompt("Please enter number a:");
+        b = prompt("Please enter number b:");
+        if (a % b) {
+            alert("a is not divisible by b");
+        }
+        else {
+            alert("a is divisible by b");
+        }
+        // (a % b) ? alert("a is not divisible by b") : alert("a is divisible by b");
+    }
+</script>
+</body>
+</html>

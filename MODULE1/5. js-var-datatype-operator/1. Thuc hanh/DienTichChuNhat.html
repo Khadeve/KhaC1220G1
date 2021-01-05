@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rectangle Area</title>
+</head>
+<body>
+<p id="recArea"></p>
+<input type="button" onclick="showRecArea()" value="click">
+<script>
+    let width = 25, height = 15;
+    let area = width * height;
+    function showRecArea() {
+        document.getElementById("recArea").innerHTML = "Area = " + area;
+    }
+</script>
+</body>
+</html>
