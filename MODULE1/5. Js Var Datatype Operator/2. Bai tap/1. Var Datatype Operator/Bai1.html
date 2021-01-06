@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AverageScore</title>
+</head>
+<body>
+<p>Summary: </p>
+<p id="sum"></p>
+<p>Average score: </p>
+<p id="averScore"></p>
+<script>
+    /*Function of input scores.*/
+    function inputScore(subject) {
+        if (subject === "math") {
+            return prompt("Enter math score: ")
+        }
+        else if (subject === "physic") {
+            return prompt("Enter physic score: ");
+        }
+        else if (subject === "chemical") {
+            return prompt("Enter chemical score: ");
+        }
+        else {
+            return alert("Invalid input data!");
+        }
+    }
+    /*Entering subject's score.*/
+    let math = parseFloat(inputScore("math"));
+    let physic = parseFloat(inputScore("physic"));
+    let chemical = parseFloat(inputScore("chemical"));
+    /*Calculating sum.*/
+    let sum = math + physic + chemical;
+    document.getElementById("sum").innerHTML = sum;
+    /*Calculating average score.*/
+    let averScore = sum / 3;
+    document.getElementById("averScore").innerHTML = averScore;
+</script>
+</body>
+</html>

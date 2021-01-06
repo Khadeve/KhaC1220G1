@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency Converter</title>
+    <style>
+        select {
+            width: 100px;
+            height: 25px;
+        }
+        input {
+            height: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        .convertButt {
+            border: 1px solid blue;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 110%;
+            background: mediumpurple;
+            margin-left: 40px;
+            width: 120px;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <!--For labels-->
+    <label for="money" style="margin-left: 50px">Amount</label>
+    <label for="orCurr" style="margin-left: 150px">From Currency</label>
+    <label for="desCurr" style="margin-left: 100px">To Currency</label><br>
+    <input type="number" id="money" name="money" value="1">
+    <!--Choosing original currency-->
+    <select id="orCurr" name="originCurren" style="margin-left: 80px">
+        <option value="vnd">VND</option>
+        <option value="usd">USD</option>
+    </select>
+    <!--Choosing destination currency-->
+    <select id="desCurr" name="desCurren" style="margin-left: 100px">
+        <option value="usd">USD</option>
+        <option value="vnd">VND</option>
+    </select>
+    <!--Convert Button-->
+    <button type="button" class="convertButt" onclick="printResult()">Convert</button><br>
+</form>
+<p id="result" style="color: blue"></p>
+<script src="CurrencyConverter.js"></script>
+</body>
+</html>

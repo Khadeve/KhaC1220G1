@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <style>
+        button {
+            width: 120px;
+            height: 25px;
+            font-family: "Berlin Sans FB Demi";
+        }
+    </style>
+</head>
+<body>
+<h1>Calculator</h1>
+<form>
+    <input type="number" id="foper" name="foper">
+    <input type="number" id="soper" name="soper">
+    <br><br>
+    <button type="button" id="add" value="+" onclick="sum()">Addition(+)</button>
+    <button type="button" id="sub" value="-" onclick="difference()">Subtraction(-)</button>
+    <button type="button" id="mul" value="*" onclick="multiplication()">Multiplication(*)</button>
+    <button type="button" id="divi" value="divi" onclick="division()">Division(/)</button>
+</form>
+<p id="result" style="font-weight: bold"></p>
+<script src="BasicCalculator.js"></script>
+</body>
+</html>
