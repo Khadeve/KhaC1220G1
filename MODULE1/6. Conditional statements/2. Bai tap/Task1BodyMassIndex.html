@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BMI</title>
+</head>
+<body>
+<script>
+    let weight = parseFloat(prompt("Enter your weight:"));
+    let height = parseFloat(prompt("Enter your height:"));
+    // alert("your weigth " + weight);
+    // alert("your height " + height);
+    let bmi = weight / height**2;
+    //Accessing function.
+    function accessIndex() {
+        if (bmi < 18.5) {
+            return "Underweight";
+        }
+        if (bmi >= 18.5 && bmi < 25) {
+            return "Normal";
+        }
+        if (bmi >= 25 && bmi < 30) {
+            return "Overweight";
+        }
+        return "Obese";
+    }
+    document.write("Your BMI: " + accessIndex());
+</script>
+</body>
+</html>

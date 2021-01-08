@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Moving Ball</title>
+</head>
+<body>
+<div id="imgBlock">
+    <img src="Soccer-Ball.jpg" alt="ball image" style="width:256px; height:256px">
+    <p>Click button below to move the image to right</p>
+    <button type="button" onclick="moveRight()">Move right</button>
+    <button type="button" onclick="moveLeft()">Move left</button>
+</div>
+
+<script>
+    let imgBlock = null;
+    function init() {
+        imgBlock = document.getElementById("imgBlock");
+        imgBlock.style.position = 'relative';
+        imgBlock.style.left = 0;
+        // imgBlock.style.right = 0;
+    }
+    function moveRight() {
+        imgBlock.style.left = parseInt(imgBlock.style.left) + 10 + 'px';
+    }
+    function moveLeft() {
+        imgBlock.style.left = parseInt(imgBlock.style.left) - 10 + 'px';
+    }
+
+    onload = init(); //    Initializing a ball object.
+</script>
+</body>
+</html>
