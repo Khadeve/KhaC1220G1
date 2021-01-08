@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log In System</title>
+</head>
+<body>
+<script>
+    let user = prompt('Who are you?');
+    if (user === 'Admin') {
+        let psw = prompt('What is your password?');
+        if (psw === 'TheMaster') {
+            alert('Welcome');
+        }
+        else if (psw == null) {
+            alert('Cancel');
+        }
+        else {
+            alert('Wrong password');
+        }
+    }
+    else if (user == null) {
+        alert('Cancel');
+    }
+    else {
+        alert("I don't know you");
+    }
+</script>
+</body>
+</html>
