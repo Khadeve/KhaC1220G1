@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task7</title>
+</head>
+<body>
+<script>
+// Solving a quadratic equation: ax^2 + bx + c = 0
+let a = parseInt(prompt("Enter the first coefficient:"));
+let b = parseInt(prompt("Enter the second coefficient:"));
+let c = parseInt(prompt("Enter the third coefficient:"));
+
+if (a === 0) {
+// Solving the equation bx + c = 0
+    if (b === 0) {
+        if (c === 0) {
+            alert("The equation has unlimited solution");
+        }
+        else {
+            alert("The equation has no solution");
+        }
+    }
+    else {
+        alert("The equation has one solution: " + (-c / b));
+    }
+}
+else {
+//    Solving the equation ax^2 + bx + c = 0
+    let delta = b**2 - 4 * a * c;
+    if (delta < 0) {
+        alert("The equation has NO solution");
+    }
+    else if (delta === 0) {
+        alert("The equation has ONE solution: " + (-b / 2 * a));
+    }
+    else {
+        let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+        let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+        alert("The equation has TWO solutions: " + "x1 = " + x1 + " and x2 = " + x2);
+    }
+}
+</script>
+</body>
+</html>

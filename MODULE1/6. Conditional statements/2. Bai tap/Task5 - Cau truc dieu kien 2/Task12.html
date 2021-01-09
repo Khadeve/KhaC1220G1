@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate bank saving interest</title>
+</head>
+<body>
+    <script>
+        let savingMoney = parseInt(prompt("Enter your saving money:"));
+        let month = parseInt(prompt("Enter the number of months:"));
+        let interestRate = parseFloat(prompt("Enter the interest per month (%):"));
+        let interest = (savingMoney * ((interestRate + 100)/ 100)**month) - savingMoney;
+        alert("The total interest: " + interest.toFixed(0));
+    </script>
+</body>
+</html>

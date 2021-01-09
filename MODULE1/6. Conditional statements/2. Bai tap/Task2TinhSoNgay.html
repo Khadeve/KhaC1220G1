@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculating days in month</title>
+</head>
+<body>
+<input type="number" id="month" name="month" placeholder="month">
+&nbsp;
+<button type="button" onclick="daysInMonth()">Days in month</button><br>
+<p id="result" style="color:blue"></p>
+<script>
+    let month = document.getElementById("month");
+    let result;
+    function daysInMonth() {
+        month = parseInt(month.value);
+        switch(month) {
+            case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                result = "31 days";
+                break;
+            case 4: case 6: case 9: case 11:
+                result = "30 days";
+                break;
+            default:
+                result = "28 or 29 days";
+        }
+        document.getElementById("result").innerHTML = month + "-th month" + " has " + result;
+    }
+
+</script>
+</body>
+</html>

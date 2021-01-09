@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculating personal tax</title>
+</head>
+<body>
+    <p id="ketQua" style='color:blue'></p>
+    <script>
+        //Các hạn mức thuế theo qui định.
+        const mucThuNhapBac1 = 5, thueSuatBac1 = 0.05, soTienTruBac1 = 0;
+        const mucThuNhapBac2 = 10, thueSuatBac2 = 0.1, soTienTruBac2 = 0.25;
+        const mucThuNhapBac3 = 18, thueSuatBac3 = 0.15, soTienTruBac3 = 0.75;
+        const mucThuNhapBac4 = 32, thueSuatBac4 = 0.2, soTienTruBac4 = 1.65;
+        const mucThuNhapBac5 = 52, thueSuatBac5 = 0.25, soTienTruBac5 = 3.25;
+        const mucThuNhapBac6 = 80, thueSuatBac6 = 0.3, soTienTruBac6 = 5.85;
+        const thueSuatBac7 = 0.35, soTienTruBac7 = 9.85;
+        //Đơn vị tính: triệu đồng.
+        const giam1NguoiPhuThuoc = 4.4;
+        let tienThue = 0;
+        let luong = parseInt(prompt("Nhập vào mức tiền lương của bạn (triệu đồng):"));
+        let thuNhapTinhThue = luong;
+        //Kiểm chưa tiền lương đã trừ tiền bảo hiểm hay chưa?
+        let baoHiem = prompt("Mức lương trên đã trừ tiền bảo hiểm bắt buộc chưa? (rồi-nhập 1 / chưa-nhập 0)");
+        if (baoHiem === '0') {
+            let tienBaoHiem = parseInt(prompt("Nhập vào số tiền bảo hiểm (triệu đồng):"));
+            thuNhapTinhThue = luong - tienBaoHiem;
+        }
+        //Giảm trừ gia cảnh cho bản thân.
+        let giamTruBanThan = parseInt(prompt("Nhập mức giảm trừ gia cảnh bản thân (triệu đồng):"));
+        thuNhapTinhThue -= giamTruBanThan;
+        //Kiểm tra số người phụ thuộc.
+        let soNguoiPhuThuoc = prompt("Bạn có bao nhiêu người phụ thuộc (tối đa 3 người)?");
+        thuNhapTinhThue -= giam1NguoiPhuThuoc * soNguoiPhuThuoc;
+        //Tính số thuế thu nhập cá nhân cần phải đóng.
+        if (thuNhapTinhThue <= mucThuNhapBac1) {
+            tienThue = thuNhapTinhThue * thueSuatBac1 - soTienTruBac1;
+        }
+        else if (thuNhapTinhThue <= mucThuNhapBac2) {
+            tienThue = thuNhapTinhThue * thueSuatBac2 - soTienTruBac2;
+        }
+        else if (thuNhapTinhThue <= mucThuNhapBac3) {
+            tienThue = thuNhapTinhThue * thueSuatBac3 - soTienTruBac3;
+        }
+        else if (thuNhapTinhThue <= mucThuNhapBac4) {
+            tienThue = thuNhapTinhThue * thueSuatBac4 - soTienTruBac4;
+        }
+        else if (thuNhapTinhThue <= mucThuNhapBac5) {
+            tienThue = thuNhapTinhThue * thueSuatBac5 - soTienTruBac5;
+        }
+        else if (thuNhapTinhThue <= mucThuNhapBac6) {
+            tienThue = thuNhapTinhThue * thueSuatBac6 - soTienTruBac6;
+        }
+        else {
+            tienThue = thuNhapTinhThue * thueSuatBac7 - soTienTruBac7;
+        }
+        document.getElementById('ketQua').innerHTML = 'Số tiền thuế phải đóng: ' + tienThue + ' triệu đồng';
+    </script>
+</body>
+</html>

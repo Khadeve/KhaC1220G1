@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Price for each level (vnd/kWh)
+        const priceLevel1 = 1510, priceLevel2 = 1561, priceLevel3 = 1813, priceLevel4 = 2282,
+        priceLevel5 = 2834, priceLevel6 = 2927;
+        //Consumption limit of levels (kWh).
+        const level1 = 50, level2 = 50, level3 = 100, level4 = 100, level5 = 100, level6 = 100;
+        let totalConsumption = parseInt(prompt("Enter the total electricity consumption:"));
+        let bill = 0;
+        // Calculating the bill.
+        if (totalConsumption > level1) {
+            bill += priceLevel1 * level1;
+            let leftConsumption = totalConsumption - level1;
+            //Calculating price of level2.
+            if (leftConsumption > level2) {
+                bill += priceLevel2 * level2;
+                leftConsumption -= level2;
+                //Calculating price of level3.
+                if (leftConsumption > level3) {
+                    bill += priceLevel3 * level3;
+                    leftConsumption -= level3;
+                    //Calculating price of level4.
+                    if (leftConsumption > level4) {
+                        bill += priceLevel4 * level4;
+                        leftConsumption -= level4;
+                        //Calculating price of level5.
+                        if (leftConsumption > level5) {
+                            bill += priceLevel5 * level5;
+                            leftConsumption -= level5;
+                            //Calculating price of level6.
+                            bill += priceLevel6 * leftConsumption;
+                        }
+                        else {  //leftConsumption <= level5
+                            bill += priceLevel5 * leftConsumption;
+                        }
+                    }
+                    else {  //leftConsumption <= level4.
+                        bill += priceLevel4 * leftConsumption;
+                    }
+                }
+                else {  //leftConsumption <= level3
+                    bill += priceLevel3 * leftConsumption;
+                }
+            }
+            else {  //leftConsumption <= level2
+                bill += priceLevel2 * leftConsumption;
+            }
+        }
+        else {  //totalConsumption <= level1
+            bill += priceLevel1 * totalConsumption;
+        }
+        //Adding the VAT tax.
+        bill += (0.1 * bill);
+        document.write("Total price: " + bill.toFixed(0));
+    </script>
+</body>
+</html>

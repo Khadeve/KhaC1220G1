@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task5</title>
+</head>
+<body>
+<script>
+    const homeworkBase = 0.2, midtermBase = 0.2, finalBase = 0.6;
+    let homework = parseFloat(prompt("Enter homework score:"));
+    let midterm = parseFloat(prompt("Enter mid-term test score:"));
+    let final = parseFloat(prompt("Enter final test score:"));
+    let averageScore = (homework * homeworkBase) + (midterm * midtermBase) + (final * finalBase);
+    if (averageScore >= 8.5) {
+        alert(averageScore + " => " + "Excellent student");
+    }
+    else if (averageScore >= 6.5 && averageScore < 8.5) {
+        alert(averageScore + " => " + "Good student");
+    }
+    else if (averageScore >= 5 && averageScore < 6.5) {
+        alert(averageScore + " => " + "Average student");
+    }
+    else {
+        alert(averageScore + " => " + "Bad student");
+    }
+</script>
+</body>
+</html>
