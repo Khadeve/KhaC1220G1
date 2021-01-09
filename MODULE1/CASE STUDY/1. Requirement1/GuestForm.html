@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <title>Guest Form</title>
+        <link rel="stylesheet" href="GuestForm.css">
+</head>
+
+<body>
+        <div id="formFrame">
+                <form name="guestForm">
+                        <div class="clearfix">
+                                <img src="FuramaLogo.jpg" atl="Furama logo"
+                                        style="float:right; width:100px; height:100px">
+                                <h2>Furama Reservation Form</h2>
+                                <p>Please complete the form below.</p>
+                        </div>
+                        <hr style="border-style: dotted; clear:right"><br>
+                        <p style="font-size: 105%">Your registration will be verified prior to your arrival.</p>
+                        <hr><br>
+                        <!--        Full name-->
+                        <h4>Full Name <span style="color: red">*</span></h4>
+                        <input type="text" id="fname" name="fname" size="10">
+                        <input type="text" id="lname" name="lname" size="15">
+                        <br>
+                        <label for="fname"><i>First name</i></label>
+                        <label for="lname" style="margin-left: 50px"><i>Last name</i></label>
+
+                        <!--        Identification document-->
+                        <h4>Identification number</h4>
+                        <input type="text" id="idDoc" name="idDoc" size="20"><br>
+                        <label for="idDoc"><i>Identification number</i></label>
+
+                        <!--        Day of birth-->
+                        <h4>Day Of Birth</h4>
+                        <input type="date" id="birthday" name="birthday"><br>
+                        <label for="birthday"><i>day of birth</i></label><br>
+
+                        <!--        Address-->
+                        <h4>Address</h4>
+                        <input class="wid300" type="text" id="street" name="street"><br>
+                        <label for="street"><i>Street Address</i></label><br><br>
+                        <!--        <input class="wid300" type="text" id="address2" name="address2"><br>-->
+                        <!--        <label for="address2"><i>Street Address Line 2</i></label><br>-->
+                        <input type="text" id="city" name="city" style="width:140px">
+                        <input type="text" id="state" name="state" style="width:150px"><br>
+                        <label for="city"><i>City</i></label>
+                        <label for="state" style="margin-left: 130px"><i>State / Province</i></label><br>
+                        <!--        <input type="text" id="postal" name="postal"><br>-->
+                        <!--        <label for="postal"><i>Postal / Zip Code</i></label><br><br>-->
+
+                        <!--        Phone number-->
+                        <h4>Phone Number <span style="color:red">*</span></h4>
+                        <input type="text" id="areaCode" name="areaCode" size="5">
+                        &nbsp; &#8209; &nbsp;
+                        <input type="number" id="phone" name="phone" size="15"><br>
+                        <label for="areaCode"><i>Area Code</i></label>
+                        <label for="phone" style="margin-left:35px"><i>Phone number</i></label>
+
+                        <!--        Email-->
+                        <h4>E-mail <span style="color:red">*</span></h4>
+                        <input type="email" id="email" name="email" placeholder="ex: myname@example.com" size="34"><br>
+                        <label for="email"><i>example@example.com</i></label>
+                        <br><br>
+                        <hr><br>
+
+                        <!--        Arrival Date/Time-->
+                        <h3>Accommodations</h3>
+                        <h4>Arrival - Date/Time</h4>
+                        <input type="date" id="arvDate" name="arvDate">
+                        &nbsp;&#128197;
+                        <input type="time" id="arvTime" name="arvTime"><br>
+                        <label for="arvDate"><i>Date</i></label>
+                        <label for="arvTime" style="margin-left:150px"><i>Time</i></label>
+
+                        <!--        Departure Date/Time-->
+                        <h4>Departure - Date/Time</h4>
+                        <input type="date" id="depDate" name="depDate" onblur="checkValidStayPeriod(arvDate.value, this.value)">
+                        &nbsp;&#128197;
+                        <input type="time" id="depTime" name="depTime"><br>
+                        <label for="depDate"><i>Date</i></label>
+                        <label for="depTime" style="margin-left:150px"><i>Time</i></label><br>
+
+                        <!--        Amount of guest-->
+                        <!--        <hr><br>-->
+                        <h4>Number of Adults</h4>
+                        <input type="number" id="adultNumber" name="adultNumber" class="accom" placeholder="ex: 23"><br>
+                        <h4>Number of Kids (If there are any)</h4>
+                        <input type="number" id="chilNumber" name="chilNumber" class="accom" placeholder="ex: 23"><br>
+                        <h4>Number of Nights at Resort</h4>
+                        <input type="number" id="nightNumber" name="nightNumber" class="accom" placeholder="ex: 23" readonly><br>
+                        <br><br>
+
+                        <!--        Room category-->
+                        <input type="radio" id="room" name="category" value="100">
+                        <label class="rad" for="room"><b>$100</b> / Night - Room</label><br>
+                        <input type="radio" id="house" name="category" value="300">
+                        <label class="rad" for="house"><b>$300</b> / Night - House</label><br>
+                        <input type="radio" id="villa" name="category" value="500">
+                        <label class="rad" for="villa"><b>$500</b> / Night - Villa</label><br>
+
+                        <!--        Room classification-->
+                        <br>
+                        <h4>Room type</h4>
+                        <input type="radio" id="normal" name="classify" value="normal">
+                        <label for="normal" class="rad">Normal</label><br>
+                        <input type="radio" id="business" name="classify" value="business">
+                        <label for="business" class="rad">Business</label><br>
+                        <input type="radio" id="vip" name="classify" value="vip">
+                        <label for="vip" class="rad">VIP</label><br>
+
+                        <!--        Customer classification-->
+                        <h4>Member Classification</h4>
+                        <select name="customerType" style="width:100px">
+                                <option value="member">Member</option>
+                                <option value="silver">Silver</option>
+                                <option value="gold">Gold</option>
+                                <option value="platinum">Platinum</option>
+                                <option value="diamond">Diamond</option>
+                        </select>
+
+                        <!--        Discount-->
+                        <br>
+                        <h4>Discount</h4>
+                        <input type="radio" id="noDiscount" name="discount" value="0" onclick="hideDiscountInput(); calTotalPay(category.value, this.value)">
+                        <label for="noDiscount" class="rad">No</label>
+                        <input type="radio" id="discount" name="discount" value="1" style="margin-left:30px" onclick="showDiscountInput()">
+                        <label for="discount" class="rad">Yes</label>
+                        <div id="discountInput" style="margin-left: 5px; display:none;">
+                                <input type="number" id="applyDiscount" name="applyDiscount" placeholder="%" style="width: 100px" onchange="calTotalPay(category.value, this.value)"><br>
+                                <label for="applyDiscount" style="margin-left:135px"><i>enter discount here</i></label>
+                        </div>
+                        <!--        Total price-->
+                        <p class="price"><strong><span>Total</span><span style="float:right" id="bill">$0.00</span></strong></p>
+                        <br>
+                        <h4>Any special request?</h4>
+                        <textarea name="specialRequest" style="width:100%; height:80px"
+                                placeholder="Type here..."></textarea>
+                        <!-- Summit button -->
+                        <button type="button" id="submit" name="submit" onclick="displayGuestInfo()">Submit</button>
+                </form>
+        </div>
+        <script src="GuestForm.js"></script>
+</body>
+
+</html>

@@ -45,3 +45,17 @@ input.accom {
 .clearfix {
     overflow: auto;
 }
+
+button[type=button] {
+    border: 1px solid rgba(199, 195, 195, 0.884);
+    border-radius: 3px;
+    padding: 5px;
+    margin: 5px 0;
+}
+
+button[type=button]:hover {
+    border: 2px solid black;
+    color: white;
+    padding: 6px;
+    background-color: rgb(134, 136, 130);
+}
