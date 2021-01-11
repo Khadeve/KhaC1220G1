@@ -16,11 +16,3 @@ function getValue(value) {
             document.getElementById("result").innerHTML = '0';
     }
 }
-
-//Continuously printing the expression.
-// document.getElementById("result").innerHTML = strResult;
-
-// function test() {
-//     alert(strResult);
-//     strResult = "";
-// }

@@ -77,7 +77,7 @@ function calRentDays(checkInDate, checkOutDate) {
 function checkValidStayPeriod(dateStr1, dateStr2) {
     calRentDays(dateStr1, dateStr2);
     if (rentDays == -1) {
-        alert("Check-out date cannot be lesser than check-in date!");
+        alert("Check-out date cannot be less than check-in date!");
     }
     else if (rentDays >= 1) {
         document.guestForm.nightNumber.value = rentDays;

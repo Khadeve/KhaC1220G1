@@ -21,15 +21,15 @@
                         <hr><br>
                         <!--        Full name-->
                         <h4>Full Name <span style="color: red">*</span></h4>
-                        <input type="text" id="fname" name="fname" size="10">
-                        <input type="text" id="lname" name="lname" size="15">
+                        <input type="text" id="fname" name="fname" size="10" required>
+                        <input type="text" id="lname" name="lname" size="15" required>
                         <br>
                         <label for="fname"><i>First name</i></label>
                         <label for="lname" style="margin-left: 50px"><i>Last name</i></label>
 
                         <!--        Identification document-->
-                        <h4>Identification number</h4>
-                        <input type="text" id="idDoc" name="idDoc" size="20"><br>
+                        <h4>Identification number <span style="color:red">*</span></h4>
+                        <input type="text" id="idDoc" name="idDoc" size="20" required><br>
                         <label for="idDoc"><i>Identification number</i></label>
 
                         <!--        Day of birth-->
@@ -52,31 +52,31 @@
 
                         <!--        Phone number-->
                         <h4>Phone Number <span style="color:red">*</span></h4>
-                        <input type="text" id="areaCode" name="areaCode" size="5">
+                        <input type="text" id="areaCode" name="areaCode" size="5" placeholder="optional">
                         &nbsp; &#8209; &nbsp;
-                        <input type="number" id="phone" name="phone" size="15"><br>
+                        <input type="number" id="phone" name="phone" size="15" required><br>
                         <label for="areaCode"><i>Area Code</i></label>
                         <label for="phone" style="margin-left:35px"><i>Phone number</i></label>
 
                         <!--        Email-->
                         <h4>E-mail <span style="color:red">*</span></h4>
-                        <input type="email" id="email" name="email" placeholder="ex: myname@example.com" size="34"><br>
+                        <input type="email" id="email" name="email" placeholder="ex: myname@example.com" size="34" required><br>
                         <label for="email"><i>example@example.com</i></label>
                         <br><br>
                         <hr><br>
 
                         <!--        Arrival Date/Time-->
                         <h3>Accommodations</h3>
-                        <h4>Arrival - Date/Time</h4>
-                        <input type="date" id="arvDate" name="arvDate">
+                        <h4>Arrival - Date/Time <span style="color:red">*</span></h4>
+                        <input type="date" id="arvDate" name="arvDate" required>
                         &nbsp;&#128197;
                         <input type="time" id="arvTime" name="arvTime"><br>
                         <label for="arvDate"><i>Date</i></label>
                         <label for="arvTime" style="margin-left:150px"><i>Time</i></label>
 
                         <!--        Departure Date/Time-->
-                        <h4>Departure - Date/Time</h4>
-                        <input type="date" id="depDate" name="depDate" onblur="checkValidStayPeriod(arvDate.value, this.value)">
+                        <h4>Departure - Date/Time <span style="color:red">*</span></h4>
+                        <input type="date" id="depDate" name="depDate" required onblur="checkValidStayPeriod(arvDate.value, this.value)">
                         &nbsp;&#128197;
                         <input type="time" id="depTime" name="depTime"><br>
                         <label for="depDate"><i>Date</i></label>
@@ -84,8 +84,8 @@
 
                         <!--        Amount of guest-->
                         <!--        <hr><br>-->
-                        <h4>Number of Adults</h4>
-                        <input type="number" id="adultNumber" name="adultNumber" class="accom" placeholder="ex: 23"><br>
+                        <h4>Number of Adults <span style="color:red">*</span></h4>
+                        <input type="number" id="adultNumber" name="adultNumber" class="accom" placeholder="ex: 23" required><br>
                         <h4>Number of Kids (If there are any)</h4>
                         <input type="number" id="chilNumber" name="chilNumber" class="accom" placeholder="ex: 23"><br>
                         <h4>Number of Nights at Resort</h4>
@@ -138,7 +138,7 @@
                         <textarea name="specialRequest" style="width:100%; height:80px"
                                 placeholder="Type here..."></textarea>
                         <!-- Summit button -->
-                        <button type="button" id="submit" name="submit" onclick="displayGuestInfo()">Submit</button>
+                        <button type="submit" id="submit" name="submit" onclick="displayGuestInfo()">Submit</button>
                 </form>
         </div>
         <script src="GuestForm.js"></script>

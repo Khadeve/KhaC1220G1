@@ -35,7 +35,7 @@ input.wid300 {
     width: 300px;
 }
 input.accom {
-    width: 50px;
+    width: 60px;
 }
 /*Price list*/
 .price {
@@ -46,14 +46,14 @@ input.accom {
     overflow: auto;
 }
 
-button[type=button] {
+button[type=submit] {
     border: 1px solid rgba(199, 195, 195, 0.884);
     border-radius: 3px;
     padding: 5px;
     margin: 5px 0;
 }
 
-button[type=button]:hover {
+button[type=submit]:hover {
     border: 2px solid black;
     color: white;
     padding: 6px;
