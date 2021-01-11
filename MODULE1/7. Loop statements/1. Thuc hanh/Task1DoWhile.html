@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task1 Do While</title>
+</head>
+
+<body>
+    <script>
+        let number, sum = 0;
+        do {
+            number = parseInt(prompt("Enter a number:\n(-1 to exit)"));
+            if (number != -1) {
+                sum += number;
+            }
+            else {
+                break;
+            }
+        } while (true);
+        document.write("Summary: " + sum);
+    </script>
+</body>
+
+</html>

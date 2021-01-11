@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>While Loop</title>
+</head>
+<body>
+    <script>
+        let number = parseInt(prompt("Enter a number:\n(-1 for exit)"));
+        let sum = 0;
+        while(number != -1) {
+            sum += number;
+            number = parseInt(prompt("Enter a number:\n(-1 for exit)"));
+        }
+        document.write("Sum: " + sum);
+    </script>
+</body>
+</html>

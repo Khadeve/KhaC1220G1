@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task2</title>
+</head>
+<body>
+    <script>
+        let number;
+        do {
+            number = parseInt(prompt("Enter a positive number:"));
+            if (number <= 0) {
+                alert("The number must be bigger than 0.");
+            }
+        } while(number <= 0);
+        let sum = 0;
+        for (let i = 1; i <= number; i++)
+        {
+            sum += i;
+        }
+        document.write("Result: " + sum);
+    </script>
+</body>
+</html>
