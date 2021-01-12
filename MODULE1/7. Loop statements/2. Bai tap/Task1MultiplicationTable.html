@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+</head>
+<body>
+    <script>
+        let mulTable = "<table border='1' cellspacing='5' cellpadding='3'>";
+        for (let row = 1; row <= 9; row++)
+        {
+            mulTable += "<tr>";
+                for(let col = 1; col <= 9; col++)
+                {
+                    mulTable += "<td width='100'>" + row + " * " + col + " = " + row * col + "</td>";
+                }
+                mulTable += "</tr><br>";
+        }
+        mulTable += "</table>";
+        document.write(mulTable);
+    </script>
+</body>
+</html>

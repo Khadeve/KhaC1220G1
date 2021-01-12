@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacy</title>
+</head>
+
+<body>
+    <script>
+        let lengthOfFibo = parseInt(prompt("Enter the length of fibonacy:"));
+        let a0 = 0, a1 = 1;
+        let result = "";
+        if (lengthOfFibo == 1) {
+            result += a0 + "   ";
+        }
+        else {
+            if (lengthOfFibo != 0) {
+                result += a0 + "   ";
+                result += a1 + "   ";
+                lengthOfFibo -= 2;
+                while (lengthOfFibo-- > 0) {
+                    let temp = a0 + a1;
+                    result += temp + "   ";
+                    a0 = a1;
+                    a1 = temp;
+                }
+            }
+        }
+        document.write("The fibonacy: " + result);
+    </script>
+</body>
+
+</html>

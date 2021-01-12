@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task8</title>
+</head>
+
+<body>
+    <input type="button" name="play" value="Play" onclick="guessNumber()">
+    <script>
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min - 1)) + (min + 1); //Random an integer within a segment of (min + 1) to (max - 1)
+        }
+
+        function guessNumber() {
+            let flag;
+            let a = parseInt(prompt("Please enter a period:\nPlease enter the first number of period:"));
+            let b = parseInt(prompt("Please enter the second number of period:"));
+            let rndNumber = getRndInteger(a, b);
+            let counter = 1;
+            do {
+                if (counter > 3) {
+                    alert("You have no any chance! Please try a new turn.");
+                    break;
+                }
+                flag = false;
+                let userChoice = parseInt(prompt("Please enter a number in (" + a + ", " + b + "):"));
+                if (rndNumber < userChoice) {
+                    flag = true;
+                    counter++;
+                    alert("Your number is bigger than machine number.");
+                }
+                else if (rndNumber > userChoice) {
+                    flag = true;
+                    counter++;
+                    alert("Your number is less than machine number.");
+                }
+                else {
+                    alert("Correct. Congratulation!");
+                }
+            } while (flag);
+        }
+
+    </script>
+</body>
+
+</html>

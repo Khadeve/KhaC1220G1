@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Numbers</title>
+</head>
+<body>
+    <script>
+        function isPrime(number) {
+            if (number == 2) {
+                return true;
+            }
+            if (number % 2 == 0) {
+                return false;
+            }
+            for (let i = 3; i <= (number / 2); i += 2)
+            {
+                if (number % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        let amountOfPrime = parseInt(prompt("Enter amount of prime number:"));
+        let counter = 0, number = 2;
+        let result = "";
+        while (counter < amountOfPrime) {
+            if (isPrime(number)) {
+                counter++;
+                result += counter + ". " + number + "<br>";
+            }
+            number++;
+        }
+        document.write(result);
+    </script>
+</body>
+</html>
