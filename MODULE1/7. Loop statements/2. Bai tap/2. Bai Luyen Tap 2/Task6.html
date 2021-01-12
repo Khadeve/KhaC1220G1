@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Shape</title>
+</head>
+<body>
+    <script>
+        let heart = "";
+        for (let row = 0; row < 6; row++)
+        {
+            for (let col = 0; col < 7; col++)
+            {
+                if ((row == 0 && col % 3 != 0) || (row == 1 && col % 3 == 0) || (row - col == 2) || (row + col == 8))
+                {
+                    heart += "*  ";
+                }
+                else {
+                    heart += "&nbsp&nbsp&nbsp";
+                }
+            }
+            heart += "<br>";
+        }
+        document.write(heart);
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let savingMoney = parseInt(prompt("Enter your saving money:"));
+        let months = parseInt(prompt("Enter number of month:"));
+        let interest = parseInt(prompt("Enter the bank interest:"));
+        let totalInterest = 1;
+        for (let i = 1; i <= months; i++)
+        {
+            totalInterest *= (1 + interest / 100);
+        }
+        let earn = (totalInterest - 1) * savingMoney;
+        earn = Math.ceil(earn);
+        document.write("The total earning: " + earn);
+    </script>
+</body>
+</html>

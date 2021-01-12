@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task3</title>
+</head>
+<body>
+    <form action="">
+        <input type="button" value="triangle1" onclick="triangle1()">
+        <input type="button" value="triangle2" onclick="triangle2()">
+        <input type="button" value="triangle3" onclick="triangle3()">
+        <input type="button" value="triangle4" onclick="triangle4()">
+    </form>
+    <p id="result"></p>
+    <script>
+        function triangle1() {
+            let righttriangle = "";
+            for (let i = 1; i <= 5; i++)
+            {
+                for (let j = 1; j <= i; j++)
+                {
+                    righttriangle += "* ";
+                }
+                righttriangle += "<br>";
+            }
+            document.getElementById("result").innerHTML = righttriangle;
+        }
+
+        function triangle2() {
+            let righttriangle = "";
+            for (let i = 5; i > 0; i--)
+            {
+                for (let j = i; j > 0; j--)
+                {
+                    righttriangle += "* ";
+                }
+                righttriangle += "<br>";
+            }
+            document.getElementById("result").innerHTML = righttriangle;
+        }
+
+        function triangle3() {
+            let triangle = "";
+            let amountOfSpace = 5;
+            for (let amountOfStar = 1; amountOfStar <= 5; amountOfStar++)
+            {
+                for (let i = amountOfSpace - amountOfStar; i > 0; i--)
+                {
+                    triangle += "&nbsp&nbsp&nbsp";
+                }
+                for (let j = amountOfStar; j > 0; j--)
+                {
+                    triangle += "* ";
+                }
+                triangle += "<br>";
+            }
+            document.getElementById("result").innerHTML = triangle;
+        }
+
+        function triangle4() {
+            let triangle = "";
+            let amountOfStar = 5;
+            for (let amountOfSpace = 0; amountOfSpace < 5; amountOfSpace++)
+            {
+                for (let i = amountOfSpace; i > 0; i--)
+                {
+                    triangle += "&nbsp&nbsp&nbsp";
+                }
+                for (let j = amountOfStar - amountOfSpace; j > 0; j--)
+                {
+                    triangle += "* ";
+                }
+                triangle += "<br>";
+            }
+            document.getElementById("result").innerHTML = triangle;
+        }
+    </script>
+</body>
+</html>

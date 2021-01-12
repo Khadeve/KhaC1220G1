@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci sequence</title>
+</head>
+<body>
+    <script>
+        let lengthOfFibo = parseInt(prompt("Please enter the length of fibonacci:"));
+        let a0 = 0, a1 = 1;
+        let result = "";
+        if (lengthOfFibo > 0) {
+            if (lengthOfFibo == 1) {
+                result += a0;
+            }
+            else {
+                result += a0 + "   " + a1 + "   ";
+                lengthOfFibo -= 2;
+                while(lengthOfFibo > 0) {
+                    var nextNumber = a0 + a1;
+                    result += nextNumber + "   ";
+                    a0 = a1;
+                    a1 = nextNumber;
+                    lengthOfFibo--;
+                }
+            }
+        }
+        document.write("Result: " + result); 
+    </script>
+</body>
+</html>

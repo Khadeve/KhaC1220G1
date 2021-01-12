@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task4</title>
+</head>
+
+<body>
+    <script>
+        let rectangle = "";
+        for (let row = 1; row <= 7; row++)
+        {
+            for (let col = 1; col <= 30; col++)
+            {
+                if (row != 1 && row != 7) {
+                    if (col != 1 && col != 30) {
+                        rectangle += "&nbsp&nbsp";
+                    }
+                    else {
+                        rectangle += "*";
+                    }
+                }
+                else {
+                    rectangle += "*";
+                }
+            }
+            rectangle += "<br>";
+        }
+        document.write(rectangle);
+    </script>
+</body>
+
+</html>
