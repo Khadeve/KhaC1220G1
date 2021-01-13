@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finding Element</title>
+</head>
+<body>
+    <script>
+        let arr = [1, 2, 3, 4, 5];
+        let number = parseInt(prompt("Enter a number: "));
+        let len = arr.length;
+        let flag = true;
+        for (let index in arr) {
+            if (arr[index] === number) {
+                alert("The " + number + " is at " + index + " position");
+                flag = false;
+                break;
+            }
+        }
+        if (flag) {
+            alert("There is NO " + number + " in the array");
+        }
+    </script>
+</body>
+</html>

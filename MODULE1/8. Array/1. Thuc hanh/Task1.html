@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task1</title>
+    <style>
+        button[type="button"] {
+            border: 1px solid #cccccc;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <input type="number" id="arrElement" name="arrElement" size="20">
+    <button type="button" id="add" name="add" onclick="pushNewElement(arrElement.value)">Add</button>
+    <button type="button" id="display" name="display" onclick="displayArr()">Display</button><br>
+    <hr style="width:50%; float:left;">
+    <p id="arrContent" style="clear:left"></p>
+
+    <script>
+        let arr = [];
+        function pushNewElement(newElement) {
+            arr.push(newElement);
+            alert("Adding Success");
+            document.getElementById("arrElement").value = "";
+        }
+        
+        function displayArr() {
+            let len = arr.length;
+            let result = "";
+            for (let i = 0; i < len; i++) {
+                result += "Element " + i + ": " + arr[i] + "<br>";
+            }
+            document.getElementById("arrContent").innerHTML = result;
+        }
+    </script>
+</body>
+</html>

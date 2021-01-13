@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finding Max</title>
+</head>
+<body>
+    <script>
+        let arr = [-3, 0, 69, 70, 5, 10];
+        let max = -Infinity;
+        let len = arr.length, maxPos = -1;
+        for (let i = 0; i < len; i++) {
+            // max = arr[i] > max ? arr[i] : max;
+            if (arr[i] > max) {
+                max = arr[i];
+                maxPos = i;
+            }
+        }
+        document.write("The greatest value in the array is " + max + " which at the " + maxPos + " position");
+    </script>
+</body>
+</html>

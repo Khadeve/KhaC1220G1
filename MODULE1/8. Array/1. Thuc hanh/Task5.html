@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carro game</title>
+</head>
+
+<body>
+    <h2>Caro game simple</h2>
+    <hr><br>
+    <div id="gameTable"></div>
+    <br>
+    <input type="button" value="Change Value" onclick="changeValue()">
+    <script>
+        let size = parseInt(prompt("Please enter the size of the table: "));
+        // let maxCol = parseInt(prompt("Please enter number of colum: "));
+        let arr = [];
+        function inputArray() {
+            for (let row = 0; row < size; row++) {
+                arr[row] = [];
+                for (let col = 0; col < size; col++) {
+                    arr[row][col] = 0;
+                }
+            }
+        }
+
+        let contentOfArr;
+        function outputArray() {
+            contentOfArr = "";
+            for (let row = 0; row < size; row++) {
+                for (let col = 0; col < size; col++) {
+                    contentOfArr += arr[row][col] + "&nbsp&nbsp";
+                }
+                contentOfArr += "<br>";
+            }
+            document.getElementById("gameTable").innerHTML = contentOfArr;
+        }
+
+        inputArray();
+        outputArray();
+
+        function changeValue() {
+            let flag, rowPos, colPos, value;
+            do {
+                flag = false;
+                rowPos = parseInt(prompt("Enter row index [0, " + (size - 1) + "]: "));
+                if (rowPos < 0 || rowPos >= size) {
+                    alert("The row index is invalid.");
+                    flag = true;
+                }
+            } while (flag);
+
+            do {
+                flag = false;
+                colPos = parseInt(prompt("Enter colum index [0, " + (size - 1) + "]: "));
+                if (colPos < 0 || colPos >= size) {
+                    alert("The colum index is invalid.");
+                    flag = true;
+                }
+            } while (flag);
+
+            if (arr[rowPos][colPos] == 0) {
+                value = prompt("Enter the your symbol:");
+                arr[rowPos][colPos] = value;
+                outputArray();
+            }
+            else {
+                alert("The position has been selected");
+            }
+        }
+    </script>
+</body>
+
+</html>
