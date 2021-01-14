@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task6</title>
+  </head>
+  <body>
+    <script>
+      let arr = [],
+        number = 0;
+
+      for (let i = 0; i < 5; i++) {
+        arr[i] = parseInt(prompt("Please enter element of " + i + " index:"));
+      }
+      document.write("The original array: " + arr);
+      number = parseInt(prompt("Please enter the value of V:"));
+      let idx,
+        len = arr.length;
+      for (idx = 0; idx < len; idx++) {
+        if (arr[idx] === number) {
+          alert(number + " is in the array");
+          arr.splice(idx, 1);
+          break;
+        }
+      }
+      if (idx === len) {
+        alert(number + " is NOT in the array");
+      }
+      document.write("<br>The new array: " + arr);
+    </script>
+  </body>
+</html>

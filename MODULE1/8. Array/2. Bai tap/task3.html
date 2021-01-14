@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swap the case of each letter</title>
+  </head>
+  <body>
+    <script>
+      let str = prompt("Please enter any string:");
+      let lenStr = str.length;
+      let arr = [];
+      for (let i = 0; i < lenStr; i++) {
+        if (str[i] >= "A" && str[i] <= "Z") {
+          arr.push(str[i].toLowerCase());
+        } else if (str[i] >= "a" && str[i] <= "z") {
+          arr.push(str[i].toUpperCase());
+        } else {
+          arr.push(str[i]);
+        }
+      }
+      document.write("The result: " + arr.join(""));
+    </script>
+  </body>
+</html>

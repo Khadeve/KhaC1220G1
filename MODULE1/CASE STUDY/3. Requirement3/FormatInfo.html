@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Format Information</title>
 </head>
 
@@ -11,30 +11,59 @@
     <p id="content"></p>
     <script>
         let customer = {
-            fullname:"Ho Quang Kha", ID:"12345678", birthday:"11/01/2021", email:"kha@gmail.com", address:"Da Nang", membership:"gold", discount:"30%", 
-            children:1, nights:3, service:"house", ServiceType:"normal"
+            fullname: "Ho Quang Kha",
+            ID: "12345678",
+            birthday: "11/01/2021",
+            email: "kha@gmail.com",
+            address: "Da Nang",
+            membership: "gold",
+            discount: "30%",
+            children: 1,
+            nights: 3,
+            service: "house",
+            ServiceType: "normal",
         };
-        let info = ["fullname", "ID", "birthday", "email", "address", "membership", "discount", "children", "nights", "service", "ServiceType"];
+        let info = [
+            "fullname",
+            "ID",
+            "birthday",
+            "email",
+            "address",
+            "membership",
+            "discount",
+            "children",
+            "nights",
+            "service",
+            "ServiceType",
+        ];
         let numberOfInfo = info.length;
-        for (let i = 0; i < numberOfInfo; i++)
-        {
+        for (let i = 0; i < numberOfInfo; i++) {
             if (i == 1) {
+                //Validating the ID
                 let flag = false;
                 let i;
                 do {
                     customer.ID = prompt("Please enter ID:");
                     var len = customer.ID.length;
-                    for (i = 0; i < len; i++)
-                    {
+                    if (len != 8) {
+                        alert(
+                            "Your ID is invalid. (Pattern: xxxxxxxx with x is a positive integer number)"
+                        );
+                        flag = true;
+                        continue;
+                    }
+                    for (i = 0; i < len; i++) {
                         if (customer.ID[i] < "0" || customer.ID[i] > "9") {
-                            alert("Your ID is invalid. ID can only include numbers form 0 to 9!");
+                            alert(
+                                "Your ID is invalid. (Pattern: xxxxxxxx with x is a positive integer number)"
+                            );
                             break;
                         }
                     }
-                    flag = (i == len) ? false : true;
-                } while(flag);
-            }
-            else if (i == 2) {
+                    flag = i == len ? false : true;
+                } while (flag);
+            } else if (i == 2) {
+                //Validating the day of birth
                 let check, len;
                 do {
                     check = false;
@@ -43,19 +72,19 @@
                     if (len != 10) {
                         check = true;
                         alert("Day of birth must be in pattern of DD/MM/YYYY");
-                    }
-                    else {
-                        for (let i = 0; i < len; i++)
-                        {
+                    } else {
+                        for (let i = 0; i < len; i++) {
                             if (i == 2 || i == 5) {
                                 if (customer.birthday[i] != "/") {
                                     check = true;
                                     alert("Day of birth must be in pattern of DD/MM/YYYY");
                                     break;
                                 }
-                            }
-                            else {
-                                if (customer.birthday[i] < "0" || customer.birthday[i] > "9") {
+                            } else {
+                                if (
+                                    customer.birthday[i] < "0" ||
+                                    customer.birthday[i] > "9"
+                                ) {
                                     check = true;
                                     alert("Day of birth must be in pattern of DD/MM/YYYY");
                                     break;
@@ -63,9 +92,9 @@
                             }
                         }
                     }
-                } while(check);
-            }
-            else if (i == 3) {
+                } while (check);
+            } else if (i == 3) {
+                //Validating the email.
                 let check1, check2;
                 do {
                     customer.email = prompt("Please enter your email:");
@@ -74,33 +103,33 @@
                     if (check1 == -1 || check2 == -1) {
                         alert("Your email is invalid. (pattern: abc@xyz.com)");
                     }
-                } while(check1 == -1 || check2 == -1);
-            }
-            else if (i == 7 || i == 8) {
+                } while (check1 == -1 || check2 == -1);
+            } else if (i == 7 || i == 8) {
+                //Validating the number of children and nights.
                 let flag;
                 do {
                     flag = false;
-                    customer[info[i]] = prompt("Please enter number of " + info[i] + ":");
+                    customer[info[i]] = prompt(
+                        "Please enter number of " + info[i] + ":"
+                    );
                     if (isNaN(customer[info[i]])) {
                         flag = true;
                         alert("The info must be a positive number");
-                    }
-                    else {
+                    } else {
                         if (customer[info[i]] < 0) {
                             flag = true;
                             alert("The info must be a positive number");
                         }
                     }
-                } while(flag);
-            }
-            else {
+                } while (flag);
+            } else {
                 customer[info[i]] = prompt("Please enter your " + info[i] + ":");
             }
         }
         let data = "";
-        for (let i = 0; i < numberOfInfo; i++)
-        {
-            data += (i + 1) + ". <b>" + info[i] + ": </b>" + customer[info[i]] + "<br>";
+        for (let i = 0; i < numberOfInfo; i++) {
+            data +=
+                i + 1 + ". <b>" + info[i] + ": </b>" + customer[info[i]] + "<br>";
         }
         document.getElementById("content").innerHTML = data;
     </script>

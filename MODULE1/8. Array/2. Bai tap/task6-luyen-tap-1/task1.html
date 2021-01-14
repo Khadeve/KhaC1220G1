@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task1</title>
+  </head>
+  <body>
+    <script>
+      let arr = [],
+        counter = 0,
+        txt = "";
+      for (let i = 0; i < 10; i++) {
+        arr[i] = parseInt(prompt("Enter the number " + (i + 1) + " :"));
+      }
+      
+      for (let value of arr) {
+        if (value >= 10) {
+            txt += value + "<br>";
+            counter++;
+        }
+      }
+      document.write("The array: " + arr + "<br>");
+      document.write(counter + " number greater than 10: <br>" + txt);
+    </script>
+  </body>
+</html>

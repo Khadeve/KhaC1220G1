@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task6</title>
+  </head>
+  <body>
+    <script>
+      let arr = [],
+        number = 0;
+      for (let i = 0; i < 10; i++) {
+        arr[i] = parseInt(prompt("Please enter element of " + i + " index:"));
+      }
+      number = parseInt(prompt("Please enter the value of V:"));
+      let flag = true;
+      for (idx in arr) {
+        if (arr[idx] == number) {
+            alert(number + " is in the array");
+            flag = false;
+            break;
+        }
+      }
+      if (flag) {
+          alert(number + " is NOT in the array");
+      }
+    </script>
+  </body>
+</html>

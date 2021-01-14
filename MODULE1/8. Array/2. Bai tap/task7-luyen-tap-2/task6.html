@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task6</title>
+  </head>
+  <body>
+    <script>
+      let arr = [];
+      let str = prompt("Please enter a string of character:");
+
+      function copyStrToArr(str, arr) {
+        let len = str.length;
+        for (let i = 0; i < len; i++) {
+          arr[i] = str[i];
+        }
+        return len;
+      }
+
+      function processOnArr() {
+        let len = copyStrToArr(str, arr);
+        for (let i = 0; i < len; i++) {
+          if (arr[i] === "-") {
+            arr[i] = "_";
+          }
+        }
+      }
+
+      // function processOnStr() {
+      //     let len = str.length;
+      //     for (let i = 0; i < len ; i++) {
+      //       if (str[i] === "-") {
+      //           str[i] = "_";
+      //       }
+      //     }
+      // }
+
+      //process();
+      document.write("The original string: " + str + "<br>");
+      processOnArr();
+      document.write("The result: " + arr.join(""));
+    </script>
+  </body>
+</html>

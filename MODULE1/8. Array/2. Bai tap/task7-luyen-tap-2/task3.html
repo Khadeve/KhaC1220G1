@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task3</title>
+  </head>
+  <body>
+    <script>
+      let arr = ["1", "a", "2", "3", "b", "c", "4"],
+        len = arr.length,
+        counter = 0;
+      for (let value of arr) {
+        if (value >= "0" && value <= "9") {
+            ++counter;
+        }
+      }
+      document.write("The number of numeric characters in the array: " + counter);
+    </script>
+  </body>
+</html>

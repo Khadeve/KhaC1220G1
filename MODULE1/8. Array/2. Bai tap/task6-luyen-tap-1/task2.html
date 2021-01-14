@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task2</title>
+  </head>
+  <body>
+    <script>
+      let arr = [1, -1, 10, 6, 0, 17, 5, 4, 3, -2];
+      let len = arr.length;
+      let max = -Infinity;
+      let indexOfMax = -1;
+      for (let index in arr) {
+        if (arr[index] > max) {
+          max = arr[index];
+          indexOfMax = index;
+        }
+      }
+      document.write(
+        "Maximum element: " + max + " is at the " + indexOfMax + " position"
+      );
+    </script>
+  </body>
+</html>

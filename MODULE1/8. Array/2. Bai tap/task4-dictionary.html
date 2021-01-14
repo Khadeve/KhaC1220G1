@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dictionary</title>
+    <style>
+      input {
+        padding: 5px;
+        font-size: 105%;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action="" name="searching">
+      <input type="search" id="engWord" name="engWord" size="20" />
+      <input
+        type="button"
+        id="confirm"
+        name="confirm"
+        value="Confirm"
+        style="margin-left: 5px"
+        onclick="searchDic()"
+      />
+      <input
+        type="button"
+        id="inputData"
+        name="inputData"
+        value="Input Data"
+        style="margin-left: 5px"
+        onclick="inputDatabase()"
+      />
+      <p>
+        Vietnamese: <b><span id="result"></span></b>
+      </p>
+    </form>
+    <script>
+      let english = [];
+      let vietnamese = [];
+      // let opt = prompt(
+      //     "1. Using Dictionary\n2. Input database\n\nPlease enter the index:"
+      // );
+
+      function inputDatabase() {
+        let engWord, vnWord, flag;
+        do {
+          flag = false;
+          engWord = "";
+          vnWord = "";
+          engWord = prompt("The new english word:");
+          vnWord = prompt("The corresponding vietnamese word:");
+          if (engWord !== "" && vnWord !== "") {
+            english.push(engWord.toLowerCase());
+            vietnamese.push(vnWord.toLowerCase());
+            flag = confirm("Do you want to continue?");
+          }
+        } while (flag);
+      }
+
+      function searchDic() {
+        let eng = document.searching.engWord.value.toLowerCase();
+        let result = document.getElementById("result");
+        let len = english.length;
+        let i;
+        for (i = 0; i < len; i++) {
+          if (eng === english[i]) {
+            result.innerHTML = vietnamese[i];
+            break;
+          }
+        }
+        if (i === len) {
+          result.innerHTML = "No match";
+        }
+      }
+    </script>
+  </body>
+</html>

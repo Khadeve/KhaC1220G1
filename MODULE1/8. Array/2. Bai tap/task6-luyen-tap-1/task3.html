@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task2</title>
+  </head>
+  <body>
+    <script>
+      let arr = [1, -1, 10, 6, 0, 17, 5, 4, 3, -2];
+      let len = arr.length;
+      let max = -Infinity;
+      let averageValue = 0;
+      for (let value of arr) {
+        if (value > max) {
+          max = value;
+        }
+        averageValue += value;
+      }
+      averageValue /= arr.length;
+      document.write(
+        "The maximum element: " + max + "<br>The average value: " + averageValue
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Count word</title>
+  </head>
+  <body>
+    <script>
+      let str = prompt("Please enter any string:");
+
+      function copyStrToArr(str, arr) {
+        let len = str.length;
+        for (let i = 0; i < len; i++) {
+          arr.push(str[i]);
+        }
+        return len;
+      }
+
+      function isAlpha(char) {
+        // char = char.toLowerCase();
+        if (char >= "a" && char <= "z") {
+          return true;
+        }
+        return false;
+      }
+
+      function countWord(str) {
+        let arr = [];
+        let len = copyStrToArr(str, arr);
+        let counter = 0;
+        arr.push(" ");
+        len++;
+        for (let i = 0; i < len; i++) {
+          if (arr[i] === " " && isAlpha(arr[i - 1])) {
+            counter++;
+          }
+        }
+        return counter;
+      }
+      document.write("The number of words in the string: " + countWord(str));
+    </script>
+  </body>
+</html>

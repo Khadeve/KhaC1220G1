@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task1</title>
+  </head>
+  <body>
+    <script>
+      let arr = [
+        [1, 2, 3, 4],
+        [5, 6, 7, 8],
+        [9, 10, 11, 12],
+      ];
+      let txt = "";
+      let numberOfRow = arr.length;
+      let numberOfCol = arr[0].length;
+      for (let row = 0; row < numberOfRow; row++) {
+        txt += '" row ' + row + '"<br>';
+        for (let col = 0; col < numberOfCol; col++) {
+            txt += '" ' + arr[row][col] + '"<br>';
+        }
+      }
+      document.write(txt);
+    </script>
+  </body>
+</html>
