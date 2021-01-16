@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Name Customer Array</title>
+  </head>
+  <body>
+    <script>
+      let arrNameCustomer = [];
+
+      function enterInfosOfCustomer(customer) {
+        customer.name = prompt("Please enter name of the customer:");
+        customer.birthday = prompt(
+          "Please enter day of birth of the customer:"
+        );
+        customer.phone = prompt(
+          "Please enter the phone number of the customer:"
+        );
+      }
+
+      function displayInfosOfCustomer(customer) {
+        let txt = "";
+        txt += "* " + customer.name + "\n";
+        txt += "* " + customer.birthday + "\n";
+        txt += "* " + customer.phone + "\n";
+        return txt;
+      }
+
+      function addNewCustomers() {
+        let amountOfNewCustomer = parseInt(
+          prompt("Please enter the amount of new customers:")
+        );
+        for (let i = 1; i <= amountOfNewCustomer; i++) {
+          var newCustomer = { name: "", birthday: "", phone: 0 };
+          alert("***Enter infos of the customer " + i);
+          enterInfosOfCustomer(newCustomer);
+          arrNameCustomer.push(newCustomer);
+        }
+      }
+
+      function sortNamesAlphabetically(list) {
+        list.sort(function (a, b) {
+          let x = a.name.toLowerCase();
+          let y = b.name.toLowerCase();
+          if (x > y) return 1;
+          if (x < y) return -1;
+          return 0;
+        });
+      }
+
+      function displayCustomerList() {
+        sortNamesAlphabetically(arrNameCustomer);
+        let arrLen = arrNameCustomer.length;
+        let customerList = "";
+        for (let i = 0; i < arrLen; i++) {
+          customerList += i + 1 + ". Customer" + (i + 1) + ":\n";
+          customerList += displayInfosOfCustomer(arrNameCustomer[i]);
+        }
+        return customerList;
+      }
+
+      function removeCustomer(customerName) {
+        let lenArr = arrNameCustomer.length;
+        let i;
+        for (i = 0; i < lenArr; i++) {
+          if (arrNameCustomer[i].name === customerName) {
+            arrNameCustomer.splice(i, 1);
+            break;
+          }
+        }
+        if (i === lenArr) {
+          alert("No existing customer match");
+        } else {
+          alert("Removing customer done\n" + displayCustomerList());
+        }
+      }
+
+      function displayCustomerNames() {
+        let names = "";
+        let len = arrNameCustomer.length;
+        for (let i = 0; i < len; i++) {
+          names += i + 1 + ". " + arrNameCustomer[i].name + "\n";
+        }
+        return names;
+      }
+
+      function menu() {
+        let opt = prompt(
+          "1. Add new customers\n2. Delete customer\n*** Enter the corresponding index:"
+        );
+        switch (opt) {
+          case "1":
+            addNewCustomers();
+            break;
+          case "2":
+            let name = prompt(
+              displayCustomerNames() +
+                "\n***Enter name of customer you want to remove:"
+            );
+            removeCustomer(name);
+            // displayCustomerList();
+            break;
+          default:
+            alert("Your choice is invalid.");
+        }
+        menu();
+      }
+
+      menu();
+
+    </script>
+  </body>
+</html>

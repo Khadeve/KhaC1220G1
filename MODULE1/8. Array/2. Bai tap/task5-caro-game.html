@@ -13,6 +13,89 @@
     <div id="gameTable"></div>
     <br />
     <script>
+      let gameTable = document.getElementById("gameTable");
+      let size = parseInt(prompt("Please enter the size of the board:"));
+      let player = true;
+      let value = [];
+
+      function setValue() {
+        for (let row = 0; row < size; row++) {
+          value[row] = [];
+          for (let col = 0; col < size; col++) {
+            value[row][col] = "";
+          }
+        }
+      }
+
+      function drawBoard() {
+        let board = "<table border='1'>";
+        for (let row = 0; row < size; row++) {
+          board += "<tr>";
+          for (let col = 0; col < size; col++) {
+            board +=
+              "<td align=center width=30 height=30 onclick='changeValue(" +
+              row +
+              ", " +
+              col +
+              ");'>" +
+              value[row][col] +
+              "</td>";
+          }
+          board += "</tr>";
+        }
+        gameTable.innerHTML = board;
+      }
+
+      function isSelected(rowIndex, colIndex) {
+        if (value[rowIndex][colIndex] != "") {
+          return false;
+        }
+        return true;
+      }
+
+      function isWinner(val) {
+        for (let row = 0; row < size; row++) {
+          for (let col = 0; col < size; col++) {
+            if (value[row][col] === val) {
+              if (value[row][col + 1] === val && value[row][col + 2] === val) {
+                return true;
+              }
+              if (value[row + 1][col] === val && value[row + 2][col] === val) {
+                return true;
+              }
+              if (value[row + 1][col + 1] === val && value[row + 2][col + 2] === val) {
+                return true;
+              }
+              if (value[row + 1][col - 1] === val && value[row + 2][col - 2] === val) {
+                return true;
+              }
+            }
+          }
+        }
+        return false;
+      }
+
+      function changeValue(rowIndex, colIndex) {
+        if (isSelected(rowIndex, colIndex)) {
+          value[rowIndex][colIndex] = player ? "X" : "O";
+          drawBoard();
+          if (isWinner(value[rowIndex][colIndex])) {
+            player ? alert("Player1 won") : alert("Player2 won");
+            if (confirm("Do you want to play a new game?")) {
+              setValue();
+              drawBoard();
+            } else {
+              window.close();
+            }
+          }
+          player = !player;
+        } else {
+          alert("Error");
+        }
+      }
+
+      setValue();
+      drawBoard();
     </script>
   </body>
 </html>

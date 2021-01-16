@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task3</title>
+  </head>
+  <body>
+    <script>
+      let arr1 = [3, 5, 1, 8, -3, 7, 8];
+      let arr2 = [7, 12, 6, 9, 20, 56, 89];
+      let arr3 = [];
+      let arr4 = [0, 0, 0, 0, 0, 0];
+
+      function findMinInArr(arr) {
+          let len = arr.length;
+          let min = Infinity;
+          for (let i = 0; i < len; i++) {
+              if (arr[i] < min) {
+                  min = arr[i];
+              }
+          }
+          return min;
+      }
+
+      function displayMinElement(minValue) {
+        if (minValue != Infinity) {
+          document.write("The minimum value is: " + minValue + "<br>");
+        }
+        else {
+            document.write("The array is empty.<br>");
+        }
+      }
+
+      let min1 = findMinInArr(arr1);
+      let min2 = findMinInArr(arr2);
+      let min3 = findMinInArr(arr3);
+      let min4 = findMinInArr(arr4);
+
+      displayMinElement(min1);
+      displayMinElement(min2);
+      displayMinElement(min3);
+      displayMinElement(min4);
+
+    </script>
+  </body>
+</html>
