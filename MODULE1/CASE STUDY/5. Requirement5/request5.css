@@ -1,0 +1,76 @@
+* {box-sizing: border-box;}
+
+/* Set height of body and the document to 100% to enable "full page tabs" */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* Style for tab links */
+.tablink {
+    background-color: #555555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+}
+
+.tablink:hover {
+    background-color: #777777;
+}
+
+/* Style the tab content (and add height: 100% for full page content) */
+.tabcontent {
+    color: white;
+    display: none;
+    padding: 100px 20px;
+    height: 100%;
+    overflow: auto;
+}
+
+#add {background-color: orange;}
+#display {background-color: green;}
+#edit {background-color: blue;}
+#delete {background-color: red;}
+
+.nameField {
+    display: inline-block;
+    width: 110px;
+    text-align: left;
+    padding: 14px 10px 0 0;
+    margin: 0;
+}
+
+.inputField {
+    display: inline-block;
+    width: 130px;
+    margin: 0;
+}
+
+span {
+    position: relative;
+    height: 20%;
+    display: block;
+    margin-left: 0;
+}
+
+/* label {
+    display: inline-block;
+    margin: 0 0 7px 0;
+} */
+
+input, select {
+  margin: 0 0 5px 0;
+  padding: 5px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+}
+
+input[type="radio"] {
+    margin-left: 10px;
+}

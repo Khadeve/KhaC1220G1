@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Management</title>
+    <link rel="stylesheet" href="ProductManage.css" />
+  </head>
+  <body>
+    <h3>Add New Product</h3>
+    <div class="newproduct">
+      <input
+        class="inputfields"
+        type="text"
+        id="newProduct"
+        placeholder="New Product"
+      />
+      <button
+        class="addfields"
+        type="button"
+        id="add"
+        onclick="addNewProduct()"
+      >
+        Add
+      </button>
+    </div>
+    <h3>Display All Product</h3>
+    <div id="products"></div>
+    <script src="ProductManage.js"></script>
+  </body>
+</html>

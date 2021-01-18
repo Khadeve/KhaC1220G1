@@ -1,209 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Data</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <h3>Choose an option and confirm:</h3>
     <form name="menu">
-        <input type="radio" id="option1" name="option" value="showinfo">
-        <label for="option1">Displaying Guest Information.</label><br>
-        <input type="radio" id="option2" name="option" value="editinfo">
-        <label for="option2">Editing Guest Information.</label><br>
-        <input type="radio" id="option3" name="option" value="showprice">
-        <label for="option3">Printing Total Price.</label><br><br>
-        <input type="button" name="confirm" value="Confirm" onclick="mainProcess(option.value)">
+      <input type="radio" id="option1" name="option" value="showinfo" />
+      <label for="option1">Displaying Guest Information.</label><br />
+      <input type="radio" id="option2" name="option" value="editinfo" />
+      <label for="option2">Editing Guest Information.</label><br />
+      <input type="radio" id="option3" name="option" value="showprice" />
+      <label for="option3">Printing Total Price.</label><br /><br />
+      <input
+        type="button"
+        name="confirm"
+        value="Confirm"
+        onclick="mainProcess(option.value)"
+      />
     </form>
 
     <form name="userData" hidden>
-        <input type="text" id="fullName" name="fullname" value="Hồ Quang Kha">
-        <input type="text" id="birthday" name="birthday" value="29/12/1995">
-        <input type="text" id="idDoc" name="idDoc" value="123456789">
-        <input type="text" id="address" name="address" value="Ngô Thì Nhậm - Hòa Khánh Bắc - Liên Chiểu - Đà Nẵng">
-        <input type="text" id="phone" name="phone" value="0345123789">
-        <input type="text" id="arvDate" name="arvDate" value="20/01/2021">
-        <input type="text" id="depDate" name="depDate" value="27/01/2021">
-        <input type="number" id="nights" name="nights" value="7">
-        <input type="number" id="adults" name="adults" value="2">
-        <input type="number" id="children" name="children" value="1">
-        <input type="text" id="roomCategory" name="serviceCategory" value="house">
-        <input type="text" id="roomClassification" name="roomClasification" value="normal">
-        <input type="text" id="customer" name="customer" value="gold">
-        <input type="text" id="discount" name="discount" value="30%">
+      <input type="text" id="fullName" name="fullname" value="Hồ Quang Kha" />
+      <input type="text" id="birthday" name="birthday" value="29/12/1995" />
+      <input type="text" id="idDoc" name="idDoc" value="123456789" />
+      <input
+        type="text"
+        id="address"
+        name="address"
+        value="Ngô Thì Nhậm - Hòa Khánh Bắc - Liên Chiểu - Đà Nẵng"
+      />
+      <input type="text" id="phone" name="phone" value="0345123789" />
+      <input type="text" id="arvDate" name="arvDate" value="20/01/2021" />
+      <input type="text" id="depDate" name="depDate" value="27/01/2021" />
+      <input type="number" id="nights" name="nights" value="7" />
+      <input type="number" id="adults" name="adults" value="2" />
+      <input type="number" id="children" name="children" value="1" />
+      <input
+        type="text"
+        id="roomCategory"
+        name="serviceCategory"
+        value="house"
+      />
+      <input
+        type="text"
+        id="roomClassification"
+        name="roomClasification"
+        value="normal"
+      />
+      <input type="text" id="customer" name="customer" value="gold" />
+      <input type="text" id="discount" name="discount" value="30%" />
     </form>
 
     <script>
+      const roomPrice = 100,
+        housePrice = 300,
+        villaPrice = 500;
 
-        const roomPrice = 100, housePrice = 300, villaPrice = 500;
+      let infoArr = [
+        document.userData.fullname.value,
+        document.userData.birthday.value,
+        document.userData.idDoc.value,
+        document.userData.address.value,
+        document.userData.phone.value,
+        document.userData.arvDate.value,
+        document.userData.depDate.value,
+        document.userData.nights.value,
+        document.userData.adults.value,
+        document.userData.children.value,
+        document.userData.serviceCategory.value,
+        document.userData.roomClasification.value,
+        document.userData.customer.value,
+        document.userData.discount.value,
+      ];
+      let title = [
+        "1. Full name: ",
+        "2. Day of birth: ",
+        "3. ID number: ",
+        "4. Address: ",
+        "5. Phone number: ",
+        "6. Arrival date: ",
+        "7. Departure date: ",
+        "8. Nights: ",
+        "9. Adults: ",
+        "10. Children: ",
+        "11. Service category: ",
+        "12. Service type: ",
+        "13. Customer type: ",
+        "14. Discount: ",
+      ];
 
-        let infoArr = [
-            document.userData.fullname.value, document.userData.birthday.value, document.userData.idDoc.value, document.userData.address.value,
-            document.userData.phone.value, document.userData.arvDate.value, document.userData.depDate.value, document.userData.nights.value,
-            document.userData.adults.value, document.userData.children.value, document.userData.serviceCategory.value, document.userData.roomClasification.value,
-            document.userData.customer.value, document.userData.discount.value
-        ];
-        let title = [
-            "1. Full name: ", "2. Day of birth: ", "3. ID number: ", "4. Address: ", "5. Phone number: ",
-            "6. Arrival date: ", "7. Departure date: ", "8. Nights: ", "9. Adults: ", "10. Children: ",
-            "11. Service category: ", "12. Service type: ", "13. Customer type: ", "14. Discount: "
-        ];
-
-        function getUserInfo() {
-            let userInfo = "";
-            let len = infoArr.length;
-            for (i = 0; i < len; i++) {
-                userInfo += "<b>" + title[i] + "</b>" + infoArr[i] + "<br>";
-            }
-            return userInfo;
+      function getUserInfo() {
+        let userInfo = "";
+        let len = infoArr.length;
+        for (i = 0; i < len; i++) {
+          userInfo += "<b>" + title[i] + "</b>" + infoArr[i] + "<br>";
         }
+        return userInfo;
+      }
 
-        function getUserInfo2() {
-            let userInfo = "";
-            let len = infoArr.length;
-            for (i = 0; i < len; i++) {
-                userInfo += title[i] + infoArr[i] + "\n";
-            }
-            return userInfo;
+      function getUserInfo2() {
+        let userInfo = "";
+        let len = infoArr.length;
+        for (i = 0; i < len; i++) {
+          userInfo += title[i] + infoArr[i] + "\n";
         }
+        return userInfo;
+      }
 
-        function calPriceForRoom() {
-            //roomPrice = priceOfService * nights
-            let nights = parseInt(infoArr[7]);
-            let priceOfService = 0;
-            switch (infoArr[10]) {
-                case "room":
-                    priceOfService = roomPrice;
-                    break;
-                case "house":
-                    priceOfService = housePrice;
-                    break;
-                case "villa":
-                    priceOfService = villaPrice;
-            }
-            return priceOfService * nights;
+      function calPriceForRoom() {
+        //roomPrice = priceOfService * nights
+        let nights = parseInt(infoArr[7]);
+        let priceOfService = 0;
+        switch (infoArr[10]) {
+          case "room":
+            priceOfService = roomPrice;
+            break;
+          case "house":
+            priceOfService = housePrice;
+            break;
+          case "villa":
+            priceOfService = villaPrice;
         }
+        return priceOfService * nights;
+      }
 
-        //Checking whether address string includes locality string?
-        function checkPreferredLocal(address, locality) {
-            return address.lastIndexOf(locality);
+      //Checking whether address string includes locality string?
+      function checkPreferredLocal(address, locality) {
+        return address.lastIndexOf(locality);
+      }
+
+      function calDiscountOnAddress() {
+        let address = infoArr[3];
+        if (checkPreferredLocal(address, "Đà Nẵng") != -1) {
+          return 20;
         }
+        if (checkPreferredLocal(address, "Huế") != -1) {
+          return 10;
+        }
+        if (checkPreferredLocal(address, "Quảng Nam") != -1) {
+          return 5;
+        }
+        return 0;
+      }
 
-        function calDiscountOnAddress() {
-            let address = infoArr[3];
-            if (checkPreferredLocal(address, "Đà Nẵng") != -1) {
-                return 20;
-            }
-            if (checkPreferredLocal(address, "Huế") != -1) {
-                return 10;
-            }
-            if (checkPreferredLocal(address, "Quảng Nam") != -1) {
-                return 5;
-            }
+      function calDiscountOnNights() {
+        let nights = infoArr[7];
+        if (nights >= 2 && nights <= 4) {
+          return 10;
+        }
+        if (nights >= 5 && nights <= 7) {
+          return 20;
+        }
+        if (nights > 7) {
+          return 30;
+        }
+        return 0;
+      }
+
+      function calDiscountOnMembership() {
+        let membership = infoArr[12];
+        switch (membership) {
+          case "member":
+            return 0;
+          case "silver":
+            return 2;
+          case "gold":
+            return 5;
+          case "platinum":
+            return 10;
+          case "diamond":
+            return 15;
+          default:
             return 0;
         }
+      }
 
-        function calDiscountOnNights() {
-            let nights = infoArr[7];
-            if (nights >= 2 && nights <= 4) {
-                return 10;
-            }
-            if (nights >= 5 && nights <= 7) {
-                return 20;
-            }
-            if (nights > 7) {
-                return 30;
-            }
-            return 0;
+      function calTotalDiscount() {
+        let x = parseInt(calDiscountOnAddress());
+        let y = parseInt(calDiscountOnNights());
+        let z = parseInt(calDiscountOnMembership());
+        return x + y + z;
+      }
+
+      function calTotalPrice() {
+        return (
+          (calPriceForRoom() - calTotalDiscount()) *
+          (1.0 - parseInt(infoArr[13]) / 100.0)
+        );
+      }
+
+      function mainProcess(choice) {
+        let newWin = window.open("", "_blank", "width:100,height:100");
+        switch (choice) {
+          case "showinfo":
+            let userInfo = getUserInfo();
+            newWin.document.write(userInfo);
+            break;
+          case "editinfo":
+            let data, editOpt, c;
+            let amountOfInfo = infoArr.length;
+            do {
+              data = getUserInfo2();
+              do {
+                editOpt = newWin.prompt(
+                  data + "\n***Enter index of info you want to edit:"
+                );
+                if (editOpt < 1 || editOpt > amountOfInfo) {
+                  newWin.alert("Failed");
+                }
+              } while (editOpt < 1 || editOpt > amountOfInfo);
+
+              for (let i = 0; i < amountOfInfo; i++) {
+                if (editOpt == i + 1) {
+                  if (editOpt == 11) {
+                    infoArr[i] = newWin.prompt(
+                      "***Enter a new info:\n1. Room\n2. House\n3. Villa\n"
+                    );
+                    infoArr[i] = infoArr[i].toLowerCase();
+                  } else if (editOpt == 12) {
+                    infoArr[i] = newWin.prompt(
+                      "***Enter a new info:\n1. Normal\n2. Business\n3. Vip\n"
+                    );
+                    infoArr[i] = infoArr[i].toLowerCase();
+                  } else if (editOpt == 13) {
+                    infoArr[i] = newWin.prompt(
+                      "***Enter a new info:\n1. Member\n2. Silver\n3. Gold\n4. Platinum\n5. Diamond\n"
+                    );
+                    infoArr[i] = infoArr[i].toLowerCase();
+                  } else {
+                    infoArr[i] = newWin.prompt("***Enter a new info:");
+                  }
+                  break;
+                }
+              }
+              c = newWin.confirm(
+                "Update successfully.\nDo you want to continue to edit? (OK / Cancel)"
+              );
+              if (c == false) {
+                data = getUserInfo2(); //last update.
+                break;
+              }
+            } while (true);
+            newWin.alert(data);
+            newWin.close();
+            break;
+
+          case "showprice":
+            newWin.document.write("Total price: $" + calTotalPrice());
         }
-
-        function calDiscountOnMembership() {
-            let membership = infoArr[12];
-            switch (membership) {
-                case 'member':
-                    return 0;
-                case 'silver':
-                    return 2;
-                case 'gold':
-                    return 5;
-                case 'platinum':
-                    return 10;
-                case 'diamond':
-                    return 15;
-                default:
-                    return 0;
-            }
-        }
-
-        function calTotalDiscount() {
-            let x = parseInt(calDiscountOnAddress());
-            let y = parseInt(calDiscountOnNights());
-            let z = parseInt(calDiscountOnMembership());
-            return x + y + z;
-        }
-
-        function calTotalPrice() {
-            return (calPriceForRoom() - calTotalDiscount()) * (1.0 - parseInt(infoArr[13]) / 100.0);
-        }
-
-        function mainProcess(choice) {
-            let newWin = window.open("", "_blank", "width:100,height:100");
-            switch (choice) {
-                case 'showinfo':
-                    let userInfo = getUserInfo();
-                    newWin.document.write(userInfo);
-                    break;
-                case 'editinfo':
-                    let data, editOpt, c;
-                    let amountOfInfo = infoArr.length;
-                    do {
-                        data = getUserInfo2();
-                        do {
-                            editOpt = newWin.prompt(data + "\n***Enter index of info you want to edit:");
-                            if (editOpt < 1 || editOpt > amountOfInfo) {
-                                newWin.alert("Failed");
-                            }
-                        } while (editOpt < 1 || editOpt > amountOfInfo);
-
-                        for (i = 0; i < amountOfInfo; i++) {
-                            if (editOpt == (i + 1)) {
-                                if (editOpt == 11) {
-                                    infoArr[i] = newWin.prompt("***Enter a new info:\n1. Room\n2. House\n3. Villa\n");
-                                    infoArr[i] = infoArr[i].toLowerCase();
-                                }
-                                else if (editOpt == 12) {
-                                    infoArr[i] = newWin.prompt("***Enter a new info:\n1. Normal\n2. Business\n3. Vip\n");
-                                    infoArr[i] = infoArr[i].toLowerCase();
-                                }
-                                else if (editOpt == 13) {
-                                    infoArr[i] = newWin.prompt("***Enter a new info:\n1. Member\n2. Silver\n3. Gold\n4. Platinum\n5. Diamond\n");
-                                    infoArr[i] = infoArr[i].toLowerCase();
-                                }
-                                else {
-                                    infoArr[i] = newWin.prompt("***Enter a new info:");
-                                }
-                                break;
-                            }
-                        }
-                        c = newWin.confirm("Update successfully.\nDo you want to continue to edit? (OK / Cancel)");
-                        if (c == false) {
-                            data = getUserInfo2();  //last update.
-                            break;
-                        }
-                    } while (true);
-                    newWin.alert(data);
-                    newWin.close();
-                    break;
-
-                case 'showprice':
-                    newWin.document.write("Total price: $" + calTotalPrice());
-            }
-        }
-
+      }
     </script>
-</body>
-
+  </body>
 </html>

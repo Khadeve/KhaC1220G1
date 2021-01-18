@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task5</title>
+</head>
+<body>
+    <script>
+        let num1 = parseFloat(prompt("Please enter the first number:"));
+        let num2 = parseFloat(prompt("Please enter the second number:"));
+        let num3 = parseFloat(prompt("Please enter the third number:"));
+
+        function findMinNumber(number1, number2, number3) {
+            let min = number1 < number2 ? number1 : number2;
+            min = number3 < min ? number3 : min;
+            return min;
+        }
+
+        document.write("Minimum value: " + findMinNumber(num1, num2, num3));
+    </script>
+</body>
+</html>

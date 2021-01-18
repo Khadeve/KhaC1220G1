@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer data system</title>
+    <link rel="stylesheet" href="request5.css" />
+  </head>
+  <body>
+    <button class="tablink" onclick="openPage('add', this, 'orange')">
+      Add
+    </button>
+    <button
+      class="tablink"
+      onclick="openPage('display', this, 'green')"
+      id="defaultopen"
+    >
+      Display
+    </button>
+    <button class="tablink" onclick="openPage('edit', this, 'blue')">
+      Edit
+    </button>
+    <button class="tablink" onclick="openPage('delete', this, 'red')">
+      Delete
+    </button>
+
+    <div id="add" class="tabcontent">
+      <h2>Add New Customer</h2>
+
+      <!-- Form -->
+      <form name="customerInfo" action="">
+        <span>
+          <div class="nameField">
+            <label>1. Name: </label>
+          </div>
+          <div class="inputField">
+            <input type="text" id="fullname" name="fullName" />
+          </div>
+        </span>
+
+        <span>
+          <div class="nameField">
+            <label>2. ID: </label>
+          </div>
+          <div class="inputField">
+            <input type="number" id="id" name="idNumber" />
+          </div>
+        </span>
+
+        <span>
+          <div class="nameField">
+            <label>3. Birthday: </label>
+          </div>
+          <div class="inputField">
+            <input type="text" id="dayOfBirth" name="birthday" />
+          </div>
+        </span>
+
+        <span>
+          <div class="nameField">
+            <label>4. Email: </label>
+          </div>
+          <div class="inputField">
+            <input type="email" id="email" name="email" />
+          </div>
+        </span>
+
+        <span>
+          <div class="nameField">
+            <label>5. Address: </label>
+          </div>
+          <div class="inputField">
+            <input type="text" id="address" name="address" />
+          </div>
+        </span>
+
+        <p>6. Membership:</p>
+        <input
+          type="radio"
+          id="member"
+          value="member"
+          onclick="getRadioValue(this.value)"
+        />
+        <label for="member">Member</label>
+        <input
+          type="radio"
+          id="silver"
+          name="membership"
+          value="silver"
+          onclick="getRadioValue(this.value)"
+        />
+        <label for="silver">Silver</label>
+        <input
+          type="radio"
+          id="gold"
+          name="membership"
+          value="gold"
+          onclick="getRadioValue(this.value)"
+        />
+        <label for="gold">Gold</label>
+        <input
+          type="radio"
+          id="platinum"
+          name="membership"
+          value="platinum"
+          onclick="getRadioValue(this.value)"
+        />
+        <label for="platinum">Platinum</label>
+        <input
+          type="radio"
+          id="diamond"
+          name="membership"
+          value="diamond"
+          onclick="getRadioValue(this.value)"
+        />
+        <label for="diamond">Diamond</label><br />
+        <!-- Use input with id="radioValue" to get value from radio input -->
+        <input type="input" id="radioValue" hidden />
+
+        <span>
+          <div class="nameField">
+            <label>7. Discount: </label>
+          </div>
+          <div class="inputField">
+            <input type="number" id="discount" name="discount" />
+          </div>
+        </span>
+
+        <span>
+          <div class="nameField">
+            <label>8. Children: </label>
+          </div>
+          <div class="inputField">
+            <input type="number" id="children" name="children" />
+          </div>
+        </span>
+
+        <span>
+          <div class="nameField">
+            <label>9. Rent days: </label>
+          </div>
+          <div class="inputField">
+            <input type="number" id="rentDays" name="rentdays" />
+          </div>
+        </span>
+
+        <span>
+          <div class="nameField">
+            <label>10. Service: </label>
+          </div>
+          <div class="inputField">
+            <select name="service" id="serviceType">
+              <option value="room">Room</option>
+              <option value="house">House</option>
+              <option value="villa">Villa</option>
+            </select>
+          </div>
+        </span>
+
+        <span>
+          <div class="nameField">
+            <label>11. Room: </label>
+          </div>
+          <div class="inputField">
+            <select name="roomType" id="roomType">
+              <option value="normal">Normal</option>
+              <option value="business">Business</option>
+              <option value="vip">Vip</option>
+            </select>
+          </div>
+        </span>
+        <br />
+        <button type="submit" name="submit" onclick="getCustomerInfo()">
+          Submit
+        </button>
+      </form>
+    </div>
+
+    <div id="display" class="tabcontent">
+      <h3>Customer List</h3>
+    </div>
+
+    <div id="edit" class="tabcontent">
+      <h3>Edit Customer</h3>
+    </div>
+
+    <div id="delete" class="tabcontent">
+      <h3>Delete Customer</h3>
+    </div>
+
+    <script src="request5.js"></script>
+  </body>
+</html>

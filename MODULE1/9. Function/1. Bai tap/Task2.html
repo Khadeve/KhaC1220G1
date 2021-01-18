@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converting measurement units</title>
+</head>
+<body>
+    <script>
+        function meterToFoot(meters) {
+          return meters * 3.279;
+        }
+        function footToMeter(foots) {
+          return foots * 0.305;
+        }
+        let menu = "1. Meter to foot\n2. Foot to meter\n";
+        let choice = prompt(menu + "***Please enter your choice:");
+        let value = prompt("Please enter the value:");
+        if (choice == 1) {
+          alert("Value in foot: " + meterToFoot(value));
+        } else {
+          alert("Value in meter: " + footToMeter(value));
+        }
+    </script>
+</body>
+</html>

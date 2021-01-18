@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checking Prime Number</title>
+  </head>
+  <body>
+    <script>
+      const maxValue = 10000;
+      function isPrime(number) {
+        //If number less than 2 is not prime number.
+        if (number < 2) {
+            return false;
+        }
+        //2 is the first even prime number.
+        if (number === 2) {
+            return true;
+        }
+        //Even numbers bigger than 2 is not prime number.
+        if (number % 2 === 0) {
+            return false;
+        }
+        //Checking odd numbers.
+        let divisibleLimit = Math.sqrt(number);
+        for (let i = 3; i <= divisibleLimit; i += 2) {
+          if (number % i === 0)
+            return false;
+        }
+        return true;
+      }
+
+      function enumPrimes() {
+        let txt = "2";
+        for (let i = 3; i <= maxValue; i += 2) {
+          if (isPrime(i)) {
+            txt += ", " + i;
+          }
+        }
+        document.write("Prime numbers less than " + maxValue + " are:\n" + txt);
+      }
+
+      enumPrimes();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is Positive Integer</title>
+</head>
+<body>
+    <script>
+        function isNaturalNumber(number) {
+            if (number >= 0 && number == parseInt(number)) {
+                alert(number + " is natural number");
+            } else {
+                alert(number + " is NOT a natural number");
+            }
+        }
+        let number = prompt("Please enter a number:");
+        isNaturalNumber(number);
+    </script>
+</body>
+</html>

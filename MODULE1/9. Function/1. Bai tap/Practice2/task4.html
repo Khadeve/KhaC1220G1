@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is Numeric Character</title>
+</head>
+<body>
+    <script>
+        function isNumericChar() {
+            var char = prompt("Please enter a character:");
+            if (isNaN(char)) {
+                alert(char + " is not a numeric character.");
+                return;
+            }
+            alert(char + " is a numeric character.");
+            isNumericChar();
+        }
+        isNumericChar();
+    </script>
+</body>
+</html>

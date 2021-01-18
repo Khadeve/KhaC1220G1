@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task5</title>
+  </head>
+  <body>
+    <script>
+      let starNames = [
+        "Polaris",
+        "Aldebaran",
+        "Deneb",
+        "Vega",
+        "Altair",
+        "Dubhe",
+        "Regulus"
+      ];
+      let starGroups = [
+          "Ursa Minor",
+          "Tarurus",
+          "Cygnus",
+          "Lyra",
+          "Aquila",
+          "Ursa Major",
+          "Leo"
+      ]
+      let starAmount = starNames.length;
+
+      function findStarGroup(starName) {
+          let index;
+          for (index = 0; index < starAmount; index++) {
+              if (starNames[index] === starName) {
+                  alert(starName + " is belong to group of " + starGroups[index]);
+                  break;
+              }
+          }
+          index === starAmount ? alert("Cannot find group of " + starName) : alert("End");
+      }
+
+      let star = prompt("Please enter name of a star:");
+      findStarGroup(star);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find a character in a string</title>
+  </head>
+  <body>
+    <script>
+
+      function findCharInArr(arr, char) {
+        let counter = 0;
+        for (let value of arr) {
+          value === char ? ++counter : counter;
+        }
+        if (counter == 0) {
+            return -1;
+        }
+        return counter;
+      }
+
+      let str = prompt("Please enter any string:");
+      let res = str.split(""); //Creating an array of res from the str string. Each element in the array is corresponding with each character in string.
+      let char = prompt("Please enter a character:");
+
+      let result = findCharInArr(res, char);
+      if (result != -1) {
+          document.write(char + " is appeared " + result + " times in " + str);
+      } else {
+          document.write("Cannot find " + char + " in " + str);
+      }
+    </script>
+  </body>
+</html>

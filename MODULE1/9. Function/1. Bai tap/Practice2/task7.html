@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse An Array</title>
+</head>
+<body>
+    <script>
+        function inputArray(arr, arrLen) {
+            for (let i = 0; i < arrLen; i++) {
+                arr[i] = parseInt(prompt("Please enter arr[" + i + "]:"));
+            }
+        }
+        
+        function outputArray(arr, arrLen) {
+            let result = "";
+            for (let i = 0; i < arrLen; i++) {
+                result += arr[i] + "  ";
+            }
+            return result;
+        }
+
+        function reverseArray(arr, len) {
+            let first = 0, last = len - 1;
+            while (first < last) {
+                var temp = arr[first];
+                arr[first] = arr[last];
+                arr[last] = temp;
+                first++;
+                last--;
+            }
+        }
+
+        let arrLen = parseInt(prompt("Please enter the amount of elements in the array:"));
+        let arr = [];
+        inputArray(arr, arrLen);
+        document.write("The original array: " + outputArray(arr, arrLen));
+        reverseArray(arr, arrLen);
+        document.write("<br>The reversed array: " + outputArray(arr, arrLen));
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is Palindrome</title>
+</head>
+<body>
+    <script>
+        function isPalindrome(str, start, end) {
+            if (start >= end ) {
+                return true;
+            }
+            if (str[start] != str[end]) {
+                return false;
+            }
+            return isPalindrome(str, ++start, --end);
+        }
+        let str = prompt("Please enter a string:");
+        alert(isPalindrome(str, 0, str.length - 1));
+    </script>
+</body>
+</html>

@@ -8,6 +8,12 @@
   <body>
     <script>
       let arrNameCustomer = [];
+      //Constructor function for Customer objects.
+      // function Customer(name, birthday, phone) {
+      //   this.name = name;
+      //   this.birthday = birthday;
+      //   this.phone = phone;
+      // }
 
       function enterInfosOfCustomer(customer) {
         customer.name = prompt("Please enter name of the customer:");
@@ -33,6 +39,7 @@
         );
         for (let i = 1; i <= amountOfNewCustomer; i++) {
           var newCustomer = { name: "", birthday: "", phone: 0 };
+          //var newCustomer = new Customer("", "", 0);
           alert("***Enter infos of the customer " + i);
           enterInfosOfCustomer(newCustomer);
           arrNameCustomer.push(newCustomer);
