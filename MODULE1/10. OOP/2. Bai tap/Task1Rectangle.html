@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Draw Rectangle</title>
+  </head>
+  <body>
+    <canvas
+      id="myCanvas"
+      width="684px"
+      height="384px"
+      style="border: 1px solid #d3d3d3"
+      >Your browser is not supported for canvas</canvas
+    >
+    <div id="specs">
+      <p>Width: <span id="widthValue"></span></p>
+      <input type="number" id="widthField" min="0" max="684" />
+      <input
+        type="button"
+        id="wbutton"
+        value="Change Width"
+        onclick="changeRecOnWidth()"
+      />
+      <p>Height: <span id="heightValue"></span></p>
+      <input type="number" id="heightField" min="0" max="684" />
+      <input
+        type="button"
+        id="hbutton"
+        value="Change Height"
+        onclick="changeRecOnHeight()"
+      />
+      <p>The Area: <span id="area"></span></p>
+      <p>The Perimeter: <span id="peri"></span></p>
+      <!-- <input type="button" id="confirm" value="Show" /> -->
+    </div>
+    <script>
+      class Rectangle {
+        constructor(width, height) {
+          this.width = width;
+          this.height = height;
+        }
+        getWidth() {
+          return this.width;
+        }
+        getHeight() {
+          return this.height;
+        }
+        setWidth(w) {
+          this.width = w;
+        }
+        setHeight(h) {
+          this.height = h;
+        }
+        getPerimeter() {
+          return 2 * (this.width + this.height);
+        }
+        getArea() {
+          return this.width * this.height;
+        }
+        drawRectangle() {
+          let myCanvas = document.getElementById("myCanvas");
+          let ctx = myCanvas.getContext("2d");
+          ctx.fillStyle = "#FF0000";
+          ctx.fillRect(0, 0, this.width, this.height);
+        }
+        eraseRectangle() {
+          let myCanvas = document.getElementById("myCanvas");
+          let ctx = myCanvas.getContext("2d");
+          ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+        }
+      }
+
+      let myRectangle = new Rectangle(0, 0);
+
+      function displayMeasurements() {
+        document.getElementById(
+          "widthValue"
+        ).innerHTML = myRectangle.getWidth();
+
+        document.getElementById(
+          "heightValue"
+        ).innerHTML = myRectangle.getHeight();
+
+        document.getElementById("area").innerHTML = myRectangle.getArea();
+        document.getElementById("peri").innerHTML = myRectangle.getPerimeter();
+      }
+
+      function changeRecOnWidth() {
+        let newValue = parseInt(document.getElementById("widthField").value);
+        if (newValue < 0) {
+          alert("The value of width must be positive.");
+        } else {
+          myRectangle.setWidth(newValue);
+          myRectangle.eraseRectangle();
+          myRectangle.drawRectangle();
+          displayMeasurements();
+        }
+        document.getElementById("widthField").value = "";
+      }
+
+      function changeRecOnHeight() {
+        let newValue = parseInt(document.getElementById("heightField").value);
+        if (newValue < 0) {
+          alert("The value of height must be positive.");
+        } else {
+          myRectangle.setHeight(newValue);
+          myRectangle.eraseRectangle();
+          myRectangle.drawRectangle();
+          displayMeasurements();
+        }
+        document.getElementById("heightField").value = "";
+      }
+
+      displayMeasurements();
+    </script>
+  </body>
+</html>

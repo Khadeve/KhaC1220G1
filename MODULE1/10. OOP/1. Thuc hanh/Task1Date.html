@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Date Class</title>
+  </head>
+  <body>
+    <script>
+      class myDate {
+        constructor(day, month, year) {
+          this.day = day;
+          this.month = month;
+          this.year = year;
+        }
+        getDay() {
+          return this.day;
+        }
+        setDay(day) {
+          this.day = day;
+        }
+        getMonth() {
+          return this.month;
+        }
+        setMonth(month) {
+          this.month = month;
+        }
+        getYear() {
+          return this.year;
+        }
+        setYear(year) {
+          this.year = year;
+        }
+        setDate(day, month, year) {
+          this.day = day;
+          this.month = month;
+          this.year = year;
+        }
+        toString() {
+          return this.getDay() + "/" + this.getMonth() + "/" + this.getYear();
+        }
+      }
+      let today = new myDate(19, 01, 2021);
+      //Displaying today.
+      alert(
+        "Today is: " +
+          today.getDay() +
+          "/" +
+          today.getMonth() +
+          "/" +
+          today.getYear()
+      );
+      today.setDate(20, 01, 2021);
+      alert("Tomorrow is: " + today.toString());
+    </script>
+  </body>
+</html>

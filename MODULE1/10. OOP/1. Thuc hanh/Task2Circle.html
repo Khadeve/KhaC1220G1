@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Class Circle</title>
+  </head>
+  <body>
+    <script>
+      class Circle {
+        constructor(radius) {
+            this.radius = radius;
+        }
+        getRadius() {
+            return this.radius;
+        }
+        getArea() {
+            return Math.PI * (this.radius**2);
+        }
+      }
+      let myCircle = new Circle(2);
+      alert("The radius of circle: " + myCircle.getRadius());
+      alert("The area of the circle: " + myCircle.getArea());
+    </script>
+  </body>
+</html>

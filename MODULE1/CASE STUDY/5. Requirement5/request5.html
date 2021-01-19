@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="request5.css" />
   </head>
   <body>
-    <button class="tablink" onclick="openPage('add', this, 'orange')">
+    <button
+      class="tablink"
+      onclick="openPage('add', this, 'orange')"
+      id="defaultOpen"
+    >
       Add
     </button>
     <button
       class="tablink"
-      onclick="openPage('display', this, 'green')"
-      id="defaultopen"
+      onclick="openPage('display', this, 'green'); displayCustomerList();"
     >
       Display
     </button>
@@ -28,7 +31,7 @@
       <h2>Add New Customer</h2>
 
       <!-- Form -->
-      <form name="customerInfo" action="">
+      <form id="customerForm" action="">
         <span>
           <div class="nameField">
             <label>1. Name: </label>
@@ -170,22 +173,21 @@
           </div>
         </span>
         <br />
-        <button type="submit" name="submit" onclick="getCustomerInfo()">
-          Submit
-        </button>
+        <input type="button" name="submit" onclick="addNewCustomerToList()" value="Submit">
       </form>
     </div>
 
     <div id="display" class="tabcontent">
-      <h3>Customer List</h3>
+      <h2>Customer List</h2>
+      <p id="content"></p>
     </div>
 
     <div id="edit" class="tabcontent">
-      <h3>Edit Customer</h3>
+      <h2>Edit Customer</h2>
     </div>
 
     <div id="delete" class="tabcontent">
-      <h3>Delete Customer</h3>
+      <h2>Delete Customer</h2>
     </div>
 
     <script src="request5.js"></script>

@@ -1,0 +1,99 @@
+function editCustomer(customer) {
+  let c;
+  do {
+    c = false;
+    let flag, editOpt;
+    do {
+      flag = false;
+      editOpt = prompt(
+        getInfoOfCustomer(customer) +
+          "\n***Please enter the index of info you want to edit:"
+      );
+      if (editOpt != null) {
+        if (editOpt < 1 || editOpt > amountOfInfo || isNaN(editOpt)) {
+          alert("Invalid index");
+          flag = true;
+        }
+      } else {
+        break;
+      }
+    } while (flag);
+
+    //Checking if Cancel is entered.
+    if (editOpt == null) {
+      if (confirm("Do you want to exit editing operation?")) {
+        break;
+      } else {
+        c = true;
+        continue;
+      }
+    }
+
+    for (let i = 0; i < amountOfInfo; i++) {
+      if (editOpt == i + 1) {
+        if (i == 5) {
+          customer[info[i]] = prompt(
+            "***Enter a new info:\n1. Member\n2. Silver\n3. Gold\n4. Platinum\n5. Diamond\n"
+          );
+        } else if (i == 9) {
+          customer[info[i]] = prompt(
+            "***Enter a new info:\n1. Room\n2. House\n3. Villa\n"
+          );
+        } else if (i == 10) {
+          customer[info[i]] = prompt(
+            "***Enter a new info:\n1. Normal\n2. Business\n3. Vip\n"
+          );
+        } else {
+          customer[info[i]] = prompt("***Enter a new info:");
+        }
+        break;
+      }
+    }
+    c = confirm("Update successfully. Do you want to continue to edit?");
+  } while (c);
+}
+
+function editCustomerInList(list) {
+  let c;
+  do {
+    // let choice = "";
+    // let listLen = list.length;
+    // //Creating choices based on customer names.
+    // for (let i = 0; i < listLen; i++) {
+    //   choice += i + 1 + ". " + list[i].fullname + "\n";
+    // }
+    c = false;
+    let listLen = list.length;
+    //Checking whether the index entered is valid.
+    let flag, editIndex;
+    do {
+      flag = false;
+      editIndex = prompt(
+        getCustomerList(list) + "***Please enter the index of customer:"
+      );
+      if (editIndex != null) {
+        if (editIndex < 1 || editIndex > listLen || isNaN(editIndex)) {
+          alert("Invalid index");
+          flag = true;
+        }
+      } else {
+        break;
+      }
+    } while (flag);
+
+    //Checking if Cancel is entered.
+    if (editIndex == null) {
+      if (confirm("Do you want to exit editing operation?")) {
+        break;
+      } else {
+        c = true;
+        continue;
+      }
+    }
+    //Editing customer with the corresponding index.
+    editCustomer(list[parseInt(editIndex) - 1]);
+    c = confirm(
+      "Editing the customer successfully.\nDo you want to continue to edit another customer?"
+    );
+  } while (c);
+}

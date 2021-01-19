@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Class Object</title>
+  </head>
+  <body>
+    <script>
+      class Mobile {
+        constructor(brand, power, isOn) {
+          this.brand = brand;
+          this.pin = power;
+          this.activeStatus = isOn;
+          this.drafts = [];
+          this.inboxes = [];
+          this.sentSMS = [];
+        }
+        isOn() {
+          return this.activeStatus;
+        }
+        switchPower() {
+          if (this.activeStatus) {
+            alert("Turned off the phone");
+          } else {
+            alert("Turned on the phone");
+          }
+          this.activeStatus = !this.activeStatus;
+        }
+        charge() {
+          if (this.pin < 5) {
+            while (this.pin <= 100) {
+              this.pin += 0.01;
+            }
+            alert(this.brand + "is already full power");
+          }
+        }
+        composeSMS() {
+          if (this.isOn()) {
+            let newSMS = prompt("New message:");
+            this.drafts.push(newSMS);
+            this.pin--;
+          } else {
+            alert(this.brand + " is turned off.\nTurn on the phone first.");
+          }
+        }
+        receiveSMS(newSMS) {
+          if (this.isOn()) {
+            this.inboxes.push(newSMS);
+            this.pin--;
+            alert(this.brand + " Received Successfully");
+          } else {
+            alert(this.brand + " is turned off.\nTurn on the phone first.");
+          }
+        }
+        sendSMS(anotherPhone) {
+          if (this.isOn()) {
+            let amountOfDrafts = this.drafts.length;
+            if (amountOfDrafts === 0) {
+              let newSMS = prompt("New message:");
+              this.sentSMS.push(newSMS);
+              alert(this.brand + " Sent Successfully");
+              anotherPhone.receiveSMS(newSMS);
+            } else {
+              let txt = "";
+              for (let i = 0; i < amountOfDrafts; i++) {
+                txt += i + 1 + ". " + this.drafts[i] + "\n";
+              }
+              let opt = parseInt(prompt(txt + "Enter SMS you wanna send:"));
+              this.sentSMS.push(this.drafts[opt - 1]);
+              alert(this.brand + " Sent Successfully");
+              anotherPhone.receiveSMS(this.drafts[opt - 1]);
+              this.drafts.splice(opt - 1, 1);
+            }
+            this.pin--;
+          } else {
+            alert(this.brand + " is turned off.\nTurn on the phone first.");
+          }
+        }
+
+        readReceivedSMS() {
+          if (this.isOn()) {
+            let txt = "";
+            let amountOfInboxes = this.inboxes.length;
+            for (let i = 0; i < amountOfInboxes; i++) {
+              txt += i + 1 + ": " + this.inboxes[i] + "\n";
+            }
+            alert(this.brand + " Inbox:\n" + txt);
+            this.pin--;
+          } else {
+            alert(this.brand + " is turned off.\nTurn on the phone first.");
+          }
+        }
+
+        readSentSMS() {
+          if (this.isOn()) {
+            let txt = "";
+            let amountOfSentSMS = this.sentSMS.length;
+            for (let i = 0; i < amountOfSentSMS; i++) {
+              txt += i + 1 + ": " + this.sentSMS[i] + "\n";
+            }
+            alert(this.brand + " Sent:\n" + txt);
+            this.pin--;
+          } else {
+            alert(this.brand + " is turned off.\nTurn on the phone first.");
+          }
+        }
+      }
+
+      let nokia = new Mobile("Nokia", 50, true);
+      let iphone = new Mobile("Iphone", 30, true);
+      nokia.composeSMS();
+      nokia.composeSMS();
+      nokia.composeSMS();
+      nokia.sendSMS(iphone);
+      nokia.readSentSMS();
+      iphone.readReceivedSMS();
+    </script>
+  </body>
+</html>

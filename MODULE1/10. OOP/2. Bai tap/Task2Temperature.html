@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature class</title>
+  </head>
+  <body>
+    <label for="celsiusField">Celsius degree: </label>
+    <input
+      type="number"
+      id="celsiusField"
+      min="-273"
+      style="margin-left: 20px"
+      oninput="displayFahrenheit(this.value); displayKenvin(this.value);"
+    /><br /><br />
+    <label for="fahField">Fahrenheit degree: </label>
+    <input type="number" id="fahField" readonly /><br /><br />
+    <label for="kenvinField">Kenvin degree:</label>
+    <input type="number" id="kenvinField" style="margin-left: 22px" readonly />
+
+    <script>
+      class Celsius {
+        constructor(value) {
+          this.value = value;
+        }
+        getValue() {
+          return this.value;
+        }
+        setValue(val) {
+          this.value = val;
+        }
+        convertToFahrenheit() {
+          return this.value * 1.8 + 32;
+        }
+        convertToKenvin() {
+          return parseFloat(this.value) + 273.15;
+        }
+      }
+
+      let celsius = new Celsius(25);
+
+      function displayFahrenheit(celValue) {
+        celsius.setValue(celValue);
+        let fahObj = document.getElementById("fahField");
+        fahObj.value = celsius.convertToFahrenheit();
+      }
+
+      function displayKenvin(celValue) {
+        celsius.setValue(celValue);
+        let kenObj = document.getElementById("kenvinField");
+        kenObj.value = celsius.convertToKenvin();
+      }
+    </script>
+  </body>
+</html>
