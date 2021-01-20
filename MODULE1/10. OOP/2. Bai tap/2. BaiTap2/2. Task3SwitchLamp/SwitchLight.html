@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Switch-Light</title>
+  </head>
+  <body>
+    <img
+      src="LightOff.jpg"
+      alt="light off"
+      id="lightOff"
+      width="128px"
+      height="220px"
+      style="display: block"
+    />
+    <img
+      src="LightOn.jpg"
+      alt="light on"
+      id="lightOn"
+      width="128px"
+      height="220px"
+      style="display: none"
+    />
+    <br /><br /><br />
+    <img
+      src="SwitchOn.jpg"
+      alt="switch on"
+      id="switchOn"
+      width="50px"
+      height="50px"
+      style="margin-left: 40px; display: block"
+      usemap="#swton"
+    />
+    <map name="swton">
+      <area shape="default" onclick="turnLightOn()" />
+    </map>
+
+    <img
+      src="SwitchOff.jpg"
+      alt="switch off"
+      id="switchOff"
+      width="50px"
+      height="50px"
+      style="margin-left: 40px; display: none"
+      usemap="#swtoff"
+    />
+    <map name="swtoff">
+      <area shape="default" onclick="turnLightOff()" />
+    </map>
+
+    <script>
+      let lightOnObj = document.getElementById("lightOn");
+      let lightOffObj = document.getElementById("lightOff");
+      let switchOnObj = document.getElementById("switchOn");
+      let switchOffObj = document.getElementById("switchOff");
+
+      class Lamp {
+        constructor(status) {
+          this.status = status;
+        }
+        turnOn() {
+          this.status = true;
+        }
+        turnOff() {
+          this.status = false;
+        }
+      }
+
+      class Switch {
+        constructor(status, lamp) {
+          this.status = status;
+          this.lamp = lamp;
+        }
+        connectToLamp(lamp) {
+          lamp.status = this.status;
+        }
+        turnOff() {
+          this.status = false;
+          this.connectToLamp(this.lamp);
+          lightOffObj.style.display = "block";
+          lightOnObj.style.display = "none";
+          switchOffObj.style.display = "none";
+          switchOnObj.style.display = "block";
+        }
+        turnOn() {
+          this.status = true;
+          this.connectToLamp(this.lamp);
+          lightOffObj.style.display = "none";
+          lightOnObj.style.display = "block";
+          switchOffObj.style.display = "block";
+          switchOnObj.style.display = "none";
+        }
+      }
+
+      let lamp = new Lamp(false);
+      let swt = new Switch(false, lamp);
+
+      function turnLightOn() {
+        swt.turnOn();
+      }
+
+      function turnLightOff() {
+        swt.turnOff();
+      }
+    </script>
+  </body>
+</html>

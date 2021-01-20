@@ -101,7 +101,7 @@ function addNewCustomerToList() {
   if (confirm("Confirm adding new customer to the list.")) {
     customerListArr.push(newCustomer);
     alert("Completed");
-    resetInputInForm("customerForm");
+    resetInputsInForm("customerForm");
   }
 }
 
@@ -109,12 +109,17 @@ function getCustomerList() {
   let content = "";
   let amountOfCustomer = customerListArr.length;
   for (let i = 0; i < amountOfCustomer; i++) {
-    content += "<b>Customer" + (i + 1) + ":</b><br>" + customerListArr[i].cusInfo + "<br>";
+    content +=
+      "<b>Customer" +
+      (i + 1) +
+      ":</b><br>" +
+      customerListArr[i].cusInfo +
+      "<br>";
   }
   return content;
 }
 
-function resetInputInForm(formId) {
+function resetInputsInForm(formId) {
   document.getElementById(formId).reset();
 }
 
@@ -125,6 +130,20 @@ function displayCustomerList() {
   }
 }
 
+function editCustomer() {
+  let content = "";
+  let amountOfCustomer = customerListArr.length;
+  for (let i = 0; i < amountOfCustomer; i++) {
+    content +=
+      "<b>Customer" +
+      (i + 1) +
+      ": <input type='button' id='editButton' value='Edit'></b><br>" +
+      customerListArr[i].cusInfo +
+      "<br>";
+  }
+  document.getElementById("editCustomer").innerHTML = content;
+  
+}
 
 document.getElementById("defaultOpen").click();
 //Get the element with id="defaultopen" and click on it.

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remote TV</title>
+  </head>
+  <body>
+    <script>
+      class Television {
+        constructor(chanel, volume, status) {
+          this.currentChanel = chanel;
+          this.volume = volume;
+          this.status = status;
+        }
+        moveToChanel(chanel) {
+          this.currentChanel = chanel;
+        }
+        increaseVolume() {
+          this.volume++;
+        }
+        decreaseVolume() {
+          this.volume--;
+        }
+        turnOn() {
+          this.status = true;
+        }
+        turnOff() {
+          this.status = false;
+        }
+      }
+
+      class Remote {
+        constructor(codes) {
+          this.codes = codes;
+        }
+        moveToChanel(television, chanel) {
+          television.moveToChanel(chanel);
+        }
+        increaseVolume(television) {
+          television.increaseVolume();
+        }
+        decreaseVolume(television) {
+          television.decreaseVolume();
+        }
+        turnTVOn(television) {
+          television.turnOn();
+        }
+        turnTVOff(television) {
+          television.turnOff();
+        }
+      }
+
+      let tivi = new Television(2, 50, false);
+      let remote = new Remote(111);
+      tivi.turnOn();
+      tivi.moveToChanel(7);
+      console.log("The current chanel: " + tivi.currentChanel + "\n");
+      remote.moveToChanel(tivi, 3);
+      console.log("Remote turn on chanel " + tivi.currentChanel);
+      tivi.increaseVolume();
+      tivi.increaseVolume();
+      console.log("The current volume " + tivi.volume);
+      remote.turnTVOff(tivi);
+      if (tivi.status) {
+          console.log("TV is on");
+      } else {
+          console.log("TV is off");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adam And Eva story</title>
+  </head>
+  <body>
+    <script>
+      class Apple {
+        constructor() {
+          this.weight = 10;
+        }
+        getWeight() {
+          return this.weight;
+        }
+        decreaseWeight() {
+          this.weight--;
+        }
+        isEmpty() {
+          if (this.weight <= 0) {
+            return true;
+          }
+          return false;
+        }
+      }
+
+      class Human {
+        constructor(name, gender, weight) {
+          this.name = name;
+          this.gender = gender;
+          this.weight = weight;
+        }
+        isMale() {
+          if (isMale) {
+            alert(this.name + " is male");
+          } else {
+            alert(this.name + " is female");
+          }
+        }
+        setGender(gender) {
+          this.gender = gender;
+        }
+        checkApple(apple) {
+          if (apple.getWeight() > 0) {
+            return true;
+          }
+          return false;
+        }
+        eat(apple) {
+          if (this.checkApple(apple)) {
+            this.weight++;
+            apple.weight--;
+          } else {
+            console.log("This apple has been fully eaten");
+          }
+        }
+        say(str) {
+          alert(this.name + " says " + str);
+        }
+        getName() {
+          return this.name;
+        }
+        setName(name) {
+          this.name = name;
+        }
+        getWeight() {
+          return this.weight;
+        }
+        setWeight(weight) {
+          this.weight = weight;
+        }
+      }
+
+      let apple = new Apple();
+      let adam = new Human("Adam", true, 70);
+      let eva = new Human("Eva", false, 50);
+      
+      while (apple.getWeight() > 0) {
+          adam.eat(apple);
+          console.log("Adam ate apple. Adam weights " + adam.getWeight() + "\n");
+          console.log("Apple left " + apple.getWeight() + "\n");
+          eva.eat(apple);
+          console.log("Eva ate apple. Eva weights " + eva.getWeight() + "\n");
+          console.log("Apple left " + apple.getWeight() + "\n");
+      }
+    </script>
+  </body>
+</html>

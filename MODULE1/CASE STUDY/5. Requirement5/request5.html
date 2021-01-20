@@ -20,7 +20,7 @@
     >
       Display
     </button>
-    <button class="tablink" onclick="openPage('edit', this, 'blue')">
+    <button class="tablink" onclick="openPage('edit', this, 'blue'); editCustomer()">
       Edit
     </button>
     <button class="tablink" onclick="openPage('delete', this, 'red')">
@@ -173,7 +173,12 @@
           </div>
         </span>
         <br />
-        <input type="button" name="submit" onclick="addNewCustomerToList()" value="Submit">
+        <input
+          type="button"
+          name="submit"
+          onclick="addNewCustomerToList()"
+          value="Submit"
+        />
       </form>
     </div>
 
@@ -184,10 +189,12 @@
 
     <div id="edit" class="tabcontent">
       <h2>Edit Customer</h2>
+      <p id="editCustomer"></p>
     </div>
 
     <div id="delete" class="tabcontent">
       <h2>Delete Customer</h2>
+      <p id="delCustomer"></p>
     </div>
 
     <script src="request5.js"></script>

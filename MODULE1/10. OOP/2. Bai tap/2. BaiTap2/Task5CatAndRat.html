@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cat And Rat</title>
+  </head>
+  <body>
+    <script>
+      class Animal {
+        constructor(name, weight, speed) {
+          this.name = name;
+          this.weight = weight;
+          this.speed = speed;
+        }
+        say(sound) {
+          alert(this.name + " says " + sound);
+        }
+      }
+      class Rat extends Animal {
+        constructor(name, weight, speed, status) {
+          super(name, weight, speed);
+          this.status = status;
+        }
+        say() {
+          alert(this.name + " says chit chit");
+        }
+      }
+      class Cat extends Animal {
+        constructor(name, weight, speed) {
+          super(name, weight, speed);
+        }
+        say() {
+          alert(this.name + " says moe moe");
+        }
+        catch(rat) {
+          if (this.speed > rat.speed) {
+            alert(this.name + " catched " + rat.name);
+          } else {
+            alert(this.name + " fails on catching " + rat.name);
+          }
+        }
+        eat(rat) {
+          if (rat.status) {
+            this.weight += rat.weight;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

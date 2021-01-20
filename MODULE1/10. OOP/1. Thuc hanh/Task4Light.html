@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battery - Flash Light</title>
+  </head>
+  <body>
+    <script>
+      class Battery {
+        constructor(power) {
+          this.energy = power;
+        }
+
+        getEnergy() {
+          return this.energy;
+        }
+
+        setEnergy(power) {
+          this.energy = power;
+        }
+
+        charge() {
+          alert("Charging");
+          while (this.energy < 100) {
+            this.energy += 0.01;
+          }
+          alert("Charge done");
+        }
+
+        decreaseEnergy() {
+          this.energy--;
+        }
+      }
+
+      class FlashLight {
+        constructor(status, pin) {
+          this.status = status;
+          this.battery = pin;
+        }
+
+        setBattery(battery) {
+          this.battery = battery;
+        }
+
+        getBatteryInfo() {
+          return this.battery.getEnergy();
+        }
+
+        light() {
+          if (this.status) {
+            if (this.getBatteryInfo() > 0) {
+              alert("Lighting");
+              this.battery.decreaseEnergy();
+            } else {
+              alert("No power left");
+              if (confirm("Do you want to charge the light?")) {
+                this.chargeLight();
+              }
+            }
+          } else {
+            alert("The light is off. Turn it on first");
+          }
+        }
+
+        turnOn() {
+          alert("Turn on");
+          this.status = true;
+        }
+
+        turnOff() {
+          alert("Turn off");
+          this.status = false;
+        }
+
+        chargeLight() {
+          this.battery.charge();
+        }
+      }
+
+      let battery = new Battery(10);
+      let lamp = new FlashLight(true, battery);
+      alert("Battery info: " + lamp.getBatteryInfo() + "\n");
+      lamp.light();
+      lamp.turnOff();
+      lamp.turnOn();
+      lamp.light();
+      alert("Battery info: " + lamp.getBatteryInfo() + "\n");
+      lamp.turnOff();
+      lamp.light();
+    </script>
+  </body>
+</html>
