@@ -20,11 +20,11 @@
     >
       Display
     </button>
-    <button class="tablink" onclick="openPage('edit', this, 'blue'); editCustomer()">
-      Edit
-    </button>
-    <button class="tablink" onclick="openPage('delete', this, 'red')">
-      Delete
+    <button
+      class="tablink"
+      onclick="openPage('edit', this, 'blue'); createEditTable();"
+    >
+      Edit / Delete
     </button>
 
     <div id="add" class="tabcontent">
@@ -77,48 +77,20 @@
           </div>
         </span>
 
-        <p>6. Membership:</p>
-        <input
-          type="radio"
-          id="member"
-          value="member"
-          onclick="getRadioValue(this.value)"
-        />
-        <label for="member">Member</label>
-        <input
-          type="radio"
-          id="silver"
-          name="membership"
-          value="silver"
-          onclick="getRadioValue(this.value)"
-        />
-        <label for="silver">Silver</label>
-        <input
-          type="radio"
-          id="gold"
-          name="membership"
-          value="gold"
-          onclick="getRadioValue(this.value)"
-        />
-        <label for="gold">Gold</label>
-        <input
-          type="radio"
-          id="platinum"
-          name="membership"
-          value="platinum"
-          onclick="getRadioValue(this.value)"
-        />
-        <label for="platinum">Platinum</label>
-        <input
-          type="radio"
-          id="diamond"
-          name="membership"
-          value="diamond"
-          onclick="getRadioValue(this.value)"
-        />
-        <label for="diamond">Diamond</label><br />
-        <!-- Use input with id="radioValue" to get value from radio input -->
-        <input type="input" id="radioValue" hidden />
+        <span>
+          <div class="nameField">
+            <label for="membership">6. Membership</label>
+          </div>
+          <div class="inputField">
+            <select id="membership">
+              <option value="member">Member</option>
+              <option value="silver">Silver</option>
+              <option value="gold">Gold</option>
+              <option value="platinum">Platinum</option>
+              <option value="diamond">Diamond</option>
+            </select>
+          </div>
+        </span>
 
         <span>
           <div class="nameField">
@@ -173,6 +145,7 @@
           </div>
         </span>
         <br />
+
         <input
           type="button"
           name="submit"
@@ -189,7 +162,10 @@
 
     <div id="edit" class="tabcontent">
       <h2>Edit Customer</h2>
-      <p id="editCustomer"></p>
+      <p id="edit1"></p>
+      <p id="edit2" style="display: none"></p>
+      <br />
+      <p id="edit3" style="display: none"></p>
     </div>
 
     <div id="delete" class="tabcontent">

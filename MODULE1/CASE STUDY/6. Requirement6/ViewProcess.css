@@ -1,0 +1,36 @@
+#cusList {
+    border: none;
+    border-bottom: 1px solid #b8b3b3;
+    border-collapse: collapse;
+    width: 100%;
+    height: auto;
+    padding: 8px;
+    margin: 20px 5px;
+}
+
+#cusList button {
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(25, 136, 25);
+    color: white;
+    font-size: 13px;
+    padding: 5px 15px;
+    margin: 3px 0;
+}
+
+#cusList button:hover {
+    background-color:rgb(63, 165, 63);
+}
+
+#cusList th, tr {
+    text-align: left;
+    padding: 5px;
+}
+
+#cusList th, tr {
+    border-bottom: 1px solid #b8b3b3;
+}
+
+#cusList tr:hover {
+    background-color: #f0ebeb;
+}

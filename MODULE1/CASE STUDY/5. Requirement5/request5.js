@@ -61,7 +61,6 @@ class Customer {
   }
 }
 
-// let customer1 = new Customer("3", 1, "1", "1", "1", "1", 1, 1, 1, "1", "2");
 let customerListArr = [];
 
 function openPage(pageName, elmnt, color) {
@@ -80,27 +79,23 @@ function openPage(pageName, elmnt, color) {
   elmnt.style.backgroundColor = color;
 }
 
-function getRadioValue(radioValue) {
-  document.getElementById("radioValue").value = radioValue;
-}
-
-function getCustomerObject() {
-  let customer = new Customer();
+function getNewCustomer() {
+  let customer = new Customer("", 0, "", "", "", "", 0, 0, 0, "", "");
   for (let i = 0; i < amountOfInfo; i++) {
-    if (i == 5) {
-      customer.membership = document.getElementById("radioValue").value;
-    } else {
-      customer[info[i]] = document.getElementById(info[i]).value;
-    }
+    customer[info[i]] = document.getElementById(info[i]).value;
   }
   return customer;
 }
 
+function resetInputsInForm(formId) {
+  document.getElementById(formId).reset();
+}
+
 function addNewCustomerToList() {
-  let newCustomer = getCustomerObject();
+  let newCustomer = getNewCustomer();
   if (confirm("Confirm adding new customer to the list.")) {
     customerListArr.push(newCustomer);
-    alert("Completed");
+    // alert("Completed");
     resetInputsInForm("customerForm");
   }
 }
@@ -110,39 +105,231 @@ function getCustomerList() {
   let amountOfCustomer = customerListArr.length;
   for (let i = 0; i < amountOfCustomer; i++) {
     content +=
-      "<b>Customer" +
+      "<b>Customer " +
       (i + 1) +
-      ":</b><br>" +
+      " :</b><br>" +
       customerListArr[i].cusInfo +
       "<br>";
   }
   return content;
 }
 
-function resetInputsInForm(formId) {
-  document.getElementById(formId).reset();
-}
-
 function displayCustomerList() {
-  let content = getCustomerList();
-  if (content != "") {
-    document.getElementById("content").innerHTML = getCustomerList();
-  }
+  document.getElementById("content").innerHTML = getCustomerList();
 }
 
-function editCustomer() {
-  let content = "";
+function showDetailOfCustomer(index) {
+  let targetObj = document.getElementById("edit2");
+  if (targetObj.style.display === "none") {
+    targetObj.style.display = "block";
+  } else {
+    targetObj.style.display = "none";
+  }
+  targetObj.innerHTML = customerListArr[index].cusInfo;
+}
+
+function createEditTable() {
+  table =
+    '<table id="customerList"><tr><th>Index</th><th>Customer Name</th><th></th><th></th><th></th></tr>';
   let amountOfCustomer = customerListArr.length;
   for (let i = 0; i < amountOfCustomer; i++) {
-    content +=
-      "<b>Customer" +
+    table +=
+      "<tr><td>" +
       (i + 1) +
-      ": <input type='button' id='editButton' value='Edit'></b><br>" +
-      customerListArr[i].cusInfo +
-      "<br>";
+      "</td><td>" +
+      customerListArr[i].fullname +
+      '</td><td><button type="button" class="modifyBut" onclick="showDetailOfCustomer(' +
+      i +
+      ')">Detail</button></td>\
+      <td><button type="button" class="modifyBut" onclick="editCustomer(' +
+      i +
+      ')">Edit</button></td>\
+      <td><button type="button" class="modifyBut" onclick="deleteCustomer(' +
+      i +
+      ')">Delete</button></td></tr>';
   }
-  document.getElementById("editCustomer").innerHTML = content;
-  
+  table += "</table>";
+
+  document.getElementById("edit1").innerHTML = table;
+}
+
+function editCustomer(index) {
+  let targetObj = document.getElementById("edit3");
+  let content = '<form id="updatedCustomerForm">';
+  content +=
+    '<span><div class="nameField"><label>1. Name: </label></div>\
+        <div class="inputField">\
+        <textarea id="updatedFullname" name="fullName" cols="30" >\
+        ' +
+    customerListArr[index].fullname +
+    '</textarea>\
+    </div>\
+    </span><br>\
+    <span>\
+      <div class="nameField"><label>2. ID: </label></div>\
+      <div class="inputField"><input type="number" id="updatedId" name="idNumber" value=' +
+    customerListArr[index].id +
+    '></div></span><br>\
+    <span>\
+      <div class="nameField">\
+        <label>3. Birthday: </label>\
+        </div>\
+        <div class="inputField">\
+          <input type="text" id="updatedDayOfBirth" name="birthday" value=' +
+    customerListArr[index].dayOfBirth +
+    '>\
+        </div>\
+    </span><br>\
+    <span>\
+      <div class="nameField">\
+        <label>4. Email: </label>\
+      </div>\
+      <div class="inputField">\
+        <input type="email" id="updatedEmail" name="email" value=' +
+    customerListArr[index].email +
+    '>\
+      </div>\
+    </span><br>\
+    <span>\
+      <div class="nameField">\
+        <label>5. Address: </label>\
+      </div>\
+      <div class="inputField">\
+        <textarea id="updatedAddress" name="address" cols="50">\
+        ' +
+    customerListArr[index].address +
+    '</textarea>\
+      </div>\
+    </span><br>\
+    <span>\
+      <div class="nameField">\
+        <label for="membership">6. Membership</label>\
+        <input type="input" size="10" readonly value=' +
+    customerListArr[index].membership +
+    '><br>\
+      </div>\
+      <div class="inputField">\
+        <select id="updatedMembership">\
+          <option value="member">Member</option>\
+          <option value="silver">Silver</option>\
+          <option value="gold">Gold</option>\
+          <option value="platinum">Platinum</option>\
+          <option value="diamond">Diamond</option>\
+        </select>\
+      </div>\
+    </span>\
+      <span>\
+        <div class="nameField">\
+          <label>7. Discount: </label>\
+        </div>\
+        <div class="inputField">\
+          <input type="number" id="updatedDiscount" name="discount" value=' +
+    customerListArr[index].discount +
+    '>\
+        </div>\
+      </span><br>\
+      <span>\
+        <div class="nameField">\
+          <label>8. Children: </label>\
+        </div>\
+        <div class="inputField">\
+          <input type="number" id="updatedChildren" name="children" value=' +
+    customerListArr[index].children +
+    '>\
+        </div>\
+      </span><br>\
+      <span>\
+        <div class="nameField">\
+          <label>9. Rent days: </label>\
+        </div>\
+        <div class="inputField">\
+          <input type="number" id="updatedRentDays" name="rentdays" value=' +
+    customerListArr[index].rentDays +
+    '>\
+        </div>\
+      </span><br>\
+      <span>\
+        <div class="nameField">\
+          10. Service:<br>\
+          <input type="text" size="10" readonly value=' +
+    customerListArr[index].serviceType +
+    '> \
+        </div>\
+        <div class="inputField">\
+          <select name="service" id="updatedServiceType">\
+            <option value="room">Room</option>\
+            <option value="house">House</option>\
+            <option value="villa">Villa</option>\
+          </select>\
+        </div>\
+      </span><br>\
+      <span>\
+        <div class="nameField">\
+          11. Room:<br>\
+          <input type="text" size="10" readonly value=' +
+    customerListArr[index].roomType +
+    '> \
+        </div>\
+        <div class="inputField">\
+          <select name="roomType" id="updatedRoomType">\
+            <option value="normal">Normal</option>\
+            <option value="business">Business</option>\
+            <option value="vip">Vip</option>\
+          </select>\
+        </div>\
+      </span><br />\
+      <input\
+        type="button"\
+        name="confirm"\
+        id="confirmUpdate"\
+        onclick="getUpdatedCustomer(' +
+    index +
+    ')"\
+        value="Confirm"\
+      />\
+      ';
+  content += "</form>";
+  if (targetObj.style.display === "none") {
+    targetObj.style.display = "block";
+  } else {
+    targetObj.style.display = "none";
+  }
+  targetObj.innerHTML = content;
+}
+
+function getUpdatedCustomer(index) {
+  let updatedForm = document.forms["updatedCustomerForm"];
+  if (confirm("Confirm changing customer info.")) {
+    customerListArr[index].fullname = updatedForm["updatedFullname"].value;
+    customerListArr[index].id = updatedForm["updatedId"].value;
+    customerListArr[index].dayOfBirth = updatedForm["updatedDayOfBirth"].value;
+    customerListArr[index].email = updatedForm["updatedEmail"].value;
+    customerListArr[index].address = updatedForm["updatedAddress"].value;
+    customerListArr[index].membership = updatedForm["updatedMembership"].value;
+    customerListArr[index].discount = updatedForm["updatedDiscount"].value;
+    customerListArr[index].children = updatedForm["updatedChildren"].value;
+    customerListArr[index].rentDays = updatedForm["updatedRentDays"].value;
+    customerListArr[index].serviceType =
+      updatedForm["updatedServiceType"].value;
+    customerListArr[index].roomType = updatedForm["updatedRoomType"].value;
+    alert("Updating Successfully");
+    document.getElementById("edit2").style.display = "none";
+    document.getElementById("edit3").style.display = "none";
+  } else {
+    alert("Cancel Process");
+  }
+}
+
+function deleteCustomer(index) {
+  if (confirm("Confirm removing this customer from the list.")) {
+    customerListArr.splice(index, 1);
+    alert("Delete Successfully");
+    createEditTable();
+    document.getElementById("edit2").style.display = "none";
+    document.getElementById("edit3").style.display = "none";
+  } else {
+    alert("Cancel process");
+  }
 }
 
 document.getElementById("defaultOpen").click();
