@@ -2,6 +2,13 @@ const priceOfRoom = 100;
 const priceOfHouse = 300;
 const priceOfVilla = 500;
 
+//Email pattern: characters@abc.abc
+const emailPatt = /^[a-z0-9]+@[a-z]+\.[a-z]{2,}$/;
+//Day of birth pattern: dd/mm/yyyy
+const datePattern = /^(0[1-9]|[12][0-9]|3[01])[\/](0[1-9]|1[012])[\/]\d{4}$/;
+//ID pattern: XXXXXXXX (8 of X) with X within range of 0-9 inclusively.
+const idPattern = /^\d{8}$/;
+
 let customerList = [];
 let customerFormObj = document.getElementById("customerForm");
 
@@ -87,7 +94,7 @@ class Customer {
     return this.lastName;
   }
   getFullName() {
-    return (this.firstName + " " + this.lastName);
+    return this.firstName + " " + this.lastName;
   }
   getID() {
     return this.id;
@@ -241,7 +248,7 @@ class Customer {
         ).toPrecision(2)
       );
     } else {
-      this.bill = 0.00;
+      this.bill = 0.0;
     }
   }
 
@@ -262,7 +269,14 @@ class Customer {
     for (let i = 0; i < numberOfInfo; i++) {
       var formElmnt = customerFormObj.elements.namedItem(info[i]);
       formElmnt.value = this[info[i]];
-      formElmnt.setAttribute("readonly", "true");
+      if (info[i] === "bill") {
+        formElmnt.value = "$ " + formElmnt.value;
+      }
+      if (info[i] === "roomType" || info[i] === "membership") {
+        formElmnt.setAttribute("disabled", "true");
+      } else {
+        formElmnt.setAttribute("readonly", "true");
+      }
     }
     this.isOnDiscount();
     document.getElementById("confirmAddContainer").style.display = "none";
@@ -273,8 +287,17 @@ class Customer {
   editInfo() {
     for (let i = 0; i < numberOfInfo; i++) {
       var formElmnt = customerFormObj.elements.namedItem(info[i]);
+      if (info[i] === "bill") {
+        formElmnt.value = "$ " + this[info[i]];
+        continue;
+      }
       formElmnt.value = this[info[i]];
-      if (formElmnt.hasAttribute("readonly")){
+      if (formElmnt.hasAttribute("disabled")) {
+        formElmnt.removeAttribute("disabled");
+      } else if (
+        formElmnt.hasAttribute("readonly") &&
+        formElmnt.id != "numberOfNights"
+      ) {
         formElmnt.removeAttribute("readonly");
       }
     }
@@ -285,6 +308,8 @@ class Customer {
   }
 }
 
+let tabLink = document.getElementsByClassName("tab-link");
+
 function openPage(pageName) {
   let tabContent = document.getElementsByClassName("tab-content");
   tabContent[0].style.display = "none";
@@ -292,6 +317,34 @@ function openPage(pageName) {
   document.getElementById(pageName).style.display = "block";
   // document.getElementById("detailInfo").style.display = "none";
 }
+
+function openSystem(system) {
+  let systemContent = document.getElementsByClassName("system-content");
+  systemContent[0].style.display = "none";
+  systemContent[1].style.display = "none";
+  document.getElementById(system).style.display = "block";
+}
+
+tabLink[2].addEventListener("click", function () {
+  tabLink[0].style.display = "none";
+  tabLink[1].style.display = "none";
+  tabLink[2].style.display = "none";
+  tabLink[3].style.display = "inline-block";
+  document.getElementById("systemName").innerHTML =
+    "Employee Management System";
+  openSystem("employeeSystem");
+  createEmployeeList();
+});
+
+tabLink[3].addEventListener("click", function () {
+  tabLink[0].style.display = "inline-block";
+  tabLink[1].style.display = "inline-block";
+  tabLink[3].style.display = "none";
+  tabLink[2].style.display = "inline-block";
+  document.getElementById("systemName").innerHTML =
+    "Customer Management System";
+  openSystem("customerSystem");
+});
 
 function createDateObjFromDateStr(dateStr) {
   let dateObj = new Date();
@@ -339,6 +392,7 @@ function isValidCheckOutDate(checkInDateStr, checkOutDateStr) {
 function removeReadonlyAndHiddenAttrs(formId) {
   let formElmnts = document.getElementById(formId).elements;
   for (let i = 0; i < formElmnts.length; i++) {
+    if (formElmnts[i].id == "numberOfNights") continue;
     if (formElmnts[i].hasAttribute("readonly")) {
       formElmnts[i].removeAttribute("readonly");
     }
@@ -371,17 +425,7 @@ function calTotalPay(roomType, discount, rentDays) {
     document.getElementById("bill").value = "$" + totalPay.toFixed(2);
     return totalPay;
   }
-  return 0.00;
-}
-
-function getUpdatedInfo(index) {
-  document.getElementById("confirmEditButton").addEventListener("click", function(){
-    if (confirm("Confirm edit info of customer (" + customerList[index].getFullName() + "):")) {
-      customerList[index].getNewInfo();
-    } else {
-      alert("Cancel the process.");
-    }
-  })
+  return 0.0;
 }
 
 customerFormObj.elements.namedItem("noDiscount").onclick = function () {
@@ -400,6 +444,31 @@ customerFormObj.elements
 
 customerFormObj.elements
   .namedItem("discount")
+  .addEventListener("change", function () {
+    calTotalPay(
+      customerFormObj.elements.namedItem("roomType").value,
+      customerFormObj.elements.namedItem("discount").value,
+      customerFormObj.elements.namedItem("numberOfNights").value
+    );
+  });
+
+customerFormObj.elements
+  .namedItem("checkOutDate")
+  .addEventListener("change", function () {
+    calRentDays(
+      customerFormObj.elements.namedItem("checkInDate").value,
+      customerFormObj.elements.namedItem("checkOutDate").value
+    );
+    calTotalPay(
+      customerFormObj.elements.namedItem("roomType").value,
+      customerFormObj.elements.namedItem("discount").value,
+      rentDays
+      // customerFormObj.elements.namedItem("numberOfNights").value
+    );
+  });
+
+customerFormObj.elements
+  .namedItem("roomType")
   .addEventListener("change", function () {
     calTotalPay(
       customerFormObj.elements.namedItem("roomType").value,
@@ -432,7 +501,6 @@ document.getElementById("checkOutDate").addEventListener("blur", function () {
 });
 
 //Open an specified page base on its id.
-let tabLink = document.getElementsByClassName("tab-link");
 // tabLink[0] is corresponding with 'Add New' button.
 tabLink[0].addEventListener("click", function () {
   removeReadonlyAndHiddenAttrs("customerForm");
@@ -460,4 +528,73 @@ document.getElementById("refresh").addEventListener("click", function () {
   }
 });
 
+function isValidEmail(email, emailPattern) {
+  return emailPattern.test(email);
+}
+
+//Validate customer email.
+document.getElementById("email").addEventListener("change", function () {
+  let isValid = isValidEmail(document.getElementById("email").value, emailPatt);
+  if (!isValid) {
+    alert(
+      "Email must be in pattern: characters followed by a @ character,\
+      followed by alphabetic characters, followed by an '.' and then at least 2 alphabetic characters."
+    );
+    document.getElementById("email").value = "";
+  }
+});
+
+function isValidDate(date, datePattern) {
+  return datePattern.test(date);
+}
+
+//Validate customer's day of birth.
+document.getElementById("dayOfBirth").addEventListener("change", function () {
+  let isValid = isValidDate(
+    document.getElementById("dayOfBirth").value,
+    datePattern
+  );
+  if (!isValid) {
+    alert("Date must be in pattern of dd/mm/yyyy");
+    document.getElementById("dayOfBirth").value = "";
+  }
+});
+
+function isValidId(id, idPattern) {
+  return idPattern.test(id);
+}
+
+//Validate customer's ID.
+document.getElementById("id").addEventListener("change", function () {
+  if (!isValidId(document.getElementById("id").value, idPattern)) {
+    alert(
+      "ID must be in pattern of NNNNNNNN (8 of N) with N in range of 0-9 inclusively."
+    );
+    document.getElementById("id").value = "";
+  }
+});
+
+//Validate number of adults.
+document
+  .getElementById("numberOfAdults")
+  .addEventListener("change", function () {
+    let quantityPatt = /^\d{1,}$/;
+    if (!quantityPatt.test(document.getElementById("numberOfAdults").value)) {
+      alert("The quantity must be a positive integer.");
+      document.getElementById("numberOfAdults").value = "";
+    }
+  });
+
+//Validate number of adults.
+document
+  .getElementById("numberOfChildren")
+  .addEventListener("change", function () {
+    let quantityPatt = /^\d{1,}$/;
+    if (!quantityPatt.test(document.getElementById("numberOfChildren").value)) {
+      alert("The quantity must be a positive integer.");
+      document.getElementById("numberOfChildren").value = "";
+    }
+  });
+
+window.onload = tabLink[3].click();
 window.onload = tabLink[0].click();

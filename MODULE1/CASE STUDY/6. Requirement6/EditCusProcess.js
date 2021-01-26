@@ -49,6 +49,28 @@ let sampleCustomer2 = new Customer(
 );
 customerList.push(sampleCustomer1, sampleCustomer2);
 
+let editedCustomerIndex = -1;
+
+function getEditedCustomerIndex(index) {
+  editedCustomerIndex = index;
+}
+
+document
+  .getElementById("confirmEditButton")
+  .addEventListener("click", function () {
+    if (
+      confirm(
+        "Confirm edit info of customer (" +
+          customerList[editedCustomerIndex].getFullName() +
+          "):"
+      )
+    ) {
+      customerList[editedCustomerIndex].getNewInfo();
+    } else {
+      alert("Cancel the process.");
+    }
+  });
+
 function createEditTable() {
   let table =
     '<table id="cusList"><tr><th>Index</th><th>Customer Name</th><th>Check-in Date</th><th>Check-out Date</th><th colspan="3"></th></tr>';
@@ -69,10 +91,12 @@ function createEditTable() {
       '].showDetailInfo()">Detail</button></td>\
         <td><button type="button" class="modifyBut" onclick="customerList[' +
       i +
-      "].editInfo(); getUpdatedInfo(" +
+      "].editInfo(); getEditedCustomerIndex(" +
       i +
       ');">Edit</button></td>\
-        <td><button type="button" class="modifyBut">Delete</button></td></tr>';
+        <td><button type="button" class="modifyBut" onclick="deleteCustomer(' +
+      i +
+      ')">Delete</button></td></tr>';
   }
   table += "</table>";
   let editObj = document.getElementById("editTable");
@@ -80,16 +104,32 @@ function createEditTable() {
   editObj.innerHTML = table;
 }
 
-// function showDetailInfo(index) {
-//   let formObj = document.getElementById("customerForm");
-//   for (let i = 0; i < numberOfInfo; i++) {
-//     formObj.elements.namedItem(info[i]).value = customerList[index][info[i]];
-//   }
-//   tabLink[0].click();
-// }
+function deleteCustomer(index) {
+  if (
+    confirm(
+      "Confirm removing the customer (" +
+        customerList[index].getFullName() +
+        ")"
+    )
+  ) {
+    customerList.splice(index, 1);
+    createEditTable();
+  } else {
+    alert("Cancel the process");
+  }
+}
 
 //tabLink[1] is corresponding with 'View All' button.
 tabLink[1].addEventListener("click", function () {
   createEditTable();
   openPage("view");
 });
+
+document
+  .getElementById("cancelEditButton")
+  .addEventListener("click", function () {
+    if (confirm("Cancel the process.")) {
+      createEditTable();
+      openPage("view");
+    }
+  });

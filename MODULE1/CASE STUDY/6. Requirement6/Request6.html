@@ -14,226 +14,238 @@
   <body>
     <!-- Header section -->
     <div class="header">
-      <h1>Customer Management System</h1>
+      <h1 id="systemName">Customer Management System</h1>
     </div>
     <!-- Menu section -->
     <div class="topnav">
       <button class="tab-link">Add New</button>
       <button class="tab-link">View All</button>
+      <button class="tab-link">Employee System</button>
+      <button class="tab-link" hidden>Customer System</button>
     </div>
-    <!-- Content section 1 -->
-    <div class="tab-content" id="add">
-      <form id="customerForm">
-        <div class="clear-fix">
-          <img src="img/FuramaLogo.jpg" alt="furama logo" />
-          <h2>Furama Reservation Form</h2>
-          <p>Please complete the form below</p>
-        </div>
-        <hr style="border-style: dotted; clear: right" />
-        <br />
-        <p style="font-size: 105%">
-          Your registration will be verified prior to your arrival.
-        </p>
-        <hr />
-        <br />
-        <!-- Full name -->
-        <h4>Full name <span>*</span></h4>
-        <input type="text" id="firstName" size="10" />
-        <input type="text" id="lastName" size="15" />
-        <br />
-        <label for="firstName"><i>First name</i></label>
-        <label for="lastName" style="margin-left: 50px"><i>Last name</i></label>
-
-        <!-- Identification document-->
-        <h4>Identification number <span>*</span></h4>
-        <input type="text" id="id" size="20" /><br />
-        <label for="id"><i>Identification number</i></label>
-
-        <!-- Day of birth -->
-        <h4>Day Of Birth</h4>
-        <input type="date" id="dayOfBirth" /><br />
-        <label for="dayOfBirth"><i>day of birth</i></label
-        ><br />
-
-        <!-- Address -->
-        <h4>Address</h4>
-        <input type="text" class="wid300" id="street" /><br />
-        <label for="street"><i>Street</i></label
-        ><br /><br />
-        <input type="text" id="city" style="width: 140px" />
-        <input type="text" id="state" style="width: 150px" /><br />
-        <label for="city"><i>City</i></label>
-        <label for="state" style="margin-left: 130px"
-          ><i>State / Province</i></label
-        ><br />
-
-        <!-- Phone number -->
-        <h4>Phone Number <span>*</span></h4>
-        <input type="text" id="areaCode" size="5" placeholder="optional" />
-        &nbsp; &#8209; &nbsp;
-        <input type="number" id="phoneNumber" size="15" /><br />
-        <label for="areaCode"><i>Area Code</i></label>
-        <label for="phoneNumber" style="margin-left: 35px"
-          ><i>Phone number</i></label
-        >
-
-        <!-- Email -->
-        <h4>E-mail <span>*</span></h4>
-        <input
-          type="email"
-          id="email"
-          placeholder="ex: myname@example.com"
-          size="34"
-        /><br />
-        <label for="email"><i>example@example.com</i></label>
-        <br /><br />
-        <hr />
-        <br />
-
-        <!-- Arrival Date/Time -->
-        <h3>Accommodations</h3>
-        <h4>Arrival - Date/Time <span>*</span></h4>
-        <input type="date" id="checkInDate" />
-        &nbsp;&#128197;
-        <input type="time" id="checkInTime" /><br />
-        <label for="checkInDate"><i>Date</i></label>
-        <label for="checkInTime" style="margin-left: 150px"><i>Time</i></label>
-
-        <!-- Departure Date/Time -->
-        <h4>Departure Date/Time <span>*</span></h4>
-        <input type="date" id="checkOutDate" />
-        &nbsp;&#128197;
-        <input type="time" id="checkOutTime" /><br />
-        <label for="checkOutDate"><i>Date</i></label>
-        <label for="checkOutTime" style="margin-left: 150px"><i>Time</i></label
-        ><br />
-
-        <!-- Amount of guest -->
-        <h4>Number of Adults <span>*</span></h4>
-        <input
-          type="number"
-          id="numberOfAdults"
-          class="accom"
-          placeholder="ex: 23"
-        />
-        <h4>Number of Kids</h4>
-        <input
-          type="number"
-          id="numberOfChildren"
-          class="accom"
-          placeholder="ex: 23"
-        />
-
-        <!-- Number of nights -->
-        <h4>Number of Nights</h4>
-        <input
-          type="number"
-          id="numberOfNights"
-          class="accom"
-          placeholder="ex: 23"
-          readonly
-        /><br />
-
-        <!-- Room Classification -->
-        <br />
-        <h4>Room type</h4>
-        <select id="roomType">
-          <option value="room"><b>$100</b> / Night - Room</option>
+    <div class="system-content" id="customerSystem">
+      <!-- Content section 1 -->
+      <div class="tab-content" id="add">
+        <form id="customerForm">
+          <div class="clear-fix">
+            <img src="img/FuramaLogo.jpg" alt="furama logo" />
+            <h2>Furama Reservation Form</h2>
+            <p>Please complete the form below</p>
+          </div>
+          <hr style="border-style: dotted; clear: right" />
           <br />
-          <option value="house"><b>$300</b> / Night - House</option>
+          <p style="font-size: 105%">
+            Your registration will be verified prior to your arrival.
+          </p>
+          <hr />
           <br />
-          <option value="villa"><b>$500</b> / Night - Villa</option>
+          <!-- Full name -->
+          <h4>Full name <span>*</span></h4>
+          <input type="text" id="firstName" size="10" />
+          <input type="text" id="lastName" size="15" />
           <br />
-        </select>
+          <label for="firstName"><i>First name</i></label>
+          <label for="lastName" style="margin-left: 50px"
+            ><i>Last name</i></label
+          >
 
-        <!-- Membership -->
-        <h4>Membership</h4>
-        <select id="membership" style="width: 100px">
-          <option value="member">Member</option>
-          <option value="silver">Silver</option>
-          <option value="gold">Gold</option>
-          <option value="platinum">Platinum</option>
-          <option value="diamond">Diamond</option>
-        </select>
+          <!-- Identification document-->
+          <h4>Identification number <span>*</span></h4>
+          <input type="text" id="id" size="15" /><br />
+          <label for="id"><i>Identification number</i></label>
 
-        <!-- Discount -->
-        <br />
-        <h4>Discount</h4>
-        <input type="radio" id="noDiscount" name="isDiscount" />
-        <label for="noDiscount" class="rad">No</label>
-        <input
-          type="radio"
-          id="yesDiscount"
-          name="isDiscount"
-          style="margin-left: 30px"
-        />
-        <label for="yesDiscount" class="rad">Yes</label>
+          <!-- Day of birth -->
+          <h4>Day Of Birth</h4>
+          <input type="input" id="dayOfBirth" /><br />
+          <label for="dayOfBirth"><i>day of birth</i></label
+          ><br />
 
-        <div id="discountField" style="margin-left: 5px; display: none">
+          <!-- Address -->
+          <h4>Address</h4>
+          <input type="text" class="wid300" id="street" /><br />
+          <label for="street"><i>Street</i></label
+          ><br /><br />
+          <input type="text" id="city" style="width: 140px" />
+          <input type="text" id="state" style="width: 150px" /><br />
+          <label for="city"><i>City</i></label>
+          <label for="state" style="margin-left: 130px"
+            ><i>State / Province</i></label
+          ><br />
+
+          <!-- Phone number -->
+          <h4>Phone Number <span>*</span></h4>
+          <input type="text" id="areaCode" size="5" placeholder="optional" />
+          &nbsp; &#8209; &nbsp;
+          <input type="number" id="phoneNumber" size="15" /><br />
+          <label for="areaCode"><i>Area Code</i></label>
+          <label for="phoneNumber" style="margin-left: 35px"
+            ><i>Phone number</i></label
+          >
+
+          <!-- Email -->
+          <h4>E-mail <span>*</span></h4>
+          <input
+            type="email"
+            id="email"
+            placeholder="ex: myname@example.com"
+            size="34"
+          /><br />
+          <label for="email"><i>example@example.com</i></label>
+          <br /><br />
+          <hr />
+          <br />
+
+          <!-- Arrival Date/Time -->
+          <h3>Accommodations</h3>
+          <h4>Arrival - Date/Time <span>*</span></h4>
+          <input type="date" id="checkInDate" />
+          &nbsp;&#128197;
+          <input type="time" id="checkInTime" /><br />
+          <label for="checkInDate"><i>Date</i></label>
+          <label for="checkInTime" style="margin-left: 150px"
+            ><i>Time</i></label
+          >
+
+          <!-- Departure Date/Time -->
+          <h4>Departure Date/Time <span>*</span></h4>
+          <input type="date" id="checkOutDate" />
+          &nbsp;&#128197;
+          <input type="time" id="checkOutTime" /><br />
+          <label for="checkOutDate"><i>Date</i></label>
+          <label for="checkOutTime" style="margin-left: 150px"
+            ><i>Time</i></label
+          ><br />
+
+          <!-- Amount of guest -->
+          <h4>Number of Adults <span>*</span></h4>
           <input
             type="number"
-            id="discount"
-            placeholder="0"
-            min="0"
-            max="100"
+            id="numberOfAdults"
+            class="accom"
+            placeholder="ex: 23"
           />
-          <span>%</span>
-        </div>
-        <!-- Total price -->
-        <div class="price-container">
-          <div><strong>Total</strong></div>
-          <div>
-            <input
-            type="text"
+          <h4>Number of Kids</h4>
+          <input
+            type="number"
+            id="numberOfChildren"
+            class="accom"
+            placeholder="ex: 23"
+          />
+
+          <!-- Number of nights -->
+          <h4>Number of Nights</h4>
+          <input
+            type="number"
+            id="numberOfNights"
+            class="accom"
+            placeholder="ex: 23"
             readonly
-            id="bill"
-            value="$0.00"
+          /><br />
+
+          <!-- Room Classification -->
+          <br />
+          <h4>Room type</h4>
+          <select id="roomType">
+            <option value="room"><b>$100</b> / Night - Room</option>
+            <br />
+            <option value="house"><b>$300</b> / Night - House</option>
+            <br />
+            <option value="villa"><b>$500</b> / Night - Villa</option>
+            <br />
+          </select>
+
+          <!-- Membership -->
+          <h4>Membership</h4>
+          <select id="membership" style="width: 100px">
+            <option value="member">Member</option>
+            <option value="silver">Silver</option>
+            <option value="gold">Gold</option>
+            <option value="platinum">Platinum</option>
+            <option value="diamond">Diamond</option>
+          </select>
+
+          <!-- Discount -->
+          <br />
+          <h4>Discount</h4>
+          <input type="radio" id="noDiscount" name="isDiscount" />
+          <label for="noDiscount" class="rad">No</label>
+          <input
+            type="radio"
+            id="yesDiscount"
+            name="isDiscount"
+            style="margin-left: 30px"
           />
+          <label for="yesDiscount" class="rad">Yes</label>
+
+          <div id="discountField" style="margin-left: 5px; display: none">
+            <input
+              type="number"
+              id="discount"
+              placeholder="0"
+              min="0"
+              max="100"
+            />
+            <span>%</span>
+          </div>
+          <!-- Total price -->
+          <div class="price-container">
+            <div><strong>Total</strong></div>
+            <div>
+              <input type="text" readonly id="bill" value="$0.00" />
+            </div>
+          </div>
+          <br />
+
+          <!-- Other special request -->
+          <h4>Any special request?</h4>
+          <textarea
+            id="specialRequest"
+            style="width: 100%; height: 80px"
+            placeholder="Type here..."
+          ></textarea>
+
+          <!-- Summit button -->
+          <div id="confirmAddContainer">
+            <button type="button" id="submit">Submit</button>
+            <button type="button" id="refresh">Reset</button>
+          </div>
+          <div id="confirmEditContainer">
+            <button type="button" id="confirmEditButton">Confirm</button>
+            <button type="button" id="cancelEditButton">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Content section 2 -->
+      <div class="tab-content" id="view">
+        <div class="search-and-sort">
+          <div class="search">
+            <input type="text" id="search" size="20" placeholder="Search..." />
+            <button type="button">
+              <label for="search"><i class="fa fa-search"></i></label>
+            </button>
+          </div>
+          <div class="sort">
+            <label for="sort">Sort: </label>
+            <select id="sort">
+              <option value="name">Name</option>
+              <option value="nights">Nights</option>
+            </select>
           </div>
         </div>
-        <br />
-
-        <!-- Other special request -->
-        <h4>Any special request?</h4>
-        <textarea
-          id="specialRequest"
-          style="width: 100%; height: 80px"
-          placeholder="Type here..."
-        ></textarea>
-
-        <!-- Summit button -->
-        <div id="confirmAddContainer">
-          <button type="button" id="submit">Submit</button>
-          <button type="button" id="refresh">Reset</button>
-        </div>
-        <div id="confirmEditContainer">
-          <button type="button" id="confirmEditButton">Confirm</button>
-          <button type="button" id="cancelEditButton">Cancel</button>
-        </div>
-      </form>
-    </div>
-
-    <!-- Content section 2 -->
-    <div class="tab-content" id="view">
-      <div class="search-and-sort">
-        <div class="search">
-          <input type="text" id="search" size="20" placeholder="Search..." />
-          <button type="button">
-            <label for="search"><i class="fa fa-search"></i></label>
-          </button>
-        </div>
-        <div class="sort">
-          <label for="sort">Sort: </label>
-          <select id="sort">
-            <option value="name">Name</option>
-            <option value="nights">Nights</option>
-          </select>
-        </div>
+        <div id="editTable"></div>
+        <!-- <div id="detailInfo"></div> -->
       </div>
-      <div id="editTable"></div>
-      <!-- <div id="detailInfo"></div> -->
+    </div>
+    <!-- END OF CUSTOMER SYSTEM -->
+    <div class="system-content" id="employeeSystem">
+      <button id="addNewEplButton">
+        <i class="fa fa-plus" style="font-size: 160%; padding: 3px"></i>
+      </button>
+      <div id="employeeList"></div>
     </div>
   </body>
-  <script src="AddProcess.js"></script>
-  <script src="EditProcess.js"></script>
+  <script src="AddCusProcess.js"></script>
+  <script src="EditCusProcess.js"></script>
+  <script src="EmployeeProcess.js"></script>
 </html>
